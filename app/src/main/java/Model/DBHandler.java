@@ -98,15 +98,32 @@ public class DBHandler extends SQLiteOpenHelper {
         return false;
     }
 
-    public ArrayList<String> GetGroupName(int WeekId){
+    public String[] GetGroupName(int WeekId){
         String query = "SELECT q.GroupName FROM " + TABLE_Groups +" q INNER JOIN " + TABLE_Weeks
-                + " a ON q.ID = a.GroupID Where a.Week = "+WeekId+" AND a.Answer IS NOT NULL";
+                + " a ON q.ID = a.GroupID Where a.Week = "+WeekId;
         SQLiteDatabase db = this.getReadableDatabase();
-        ArrayList<String> result = new ArrayList<>();
+        String[] result;
+        Cursor cursor = db.rawQuery(query,null);
+        result = new String[cursor.getCount()];
+        if (cursor.moveToFirst()) {
+            int i = 0;
+
+            do {
+                result[i] = cursor.getString(0);
+                i++;
+            }while (cursor.moveToNext());
+        }
+        return result;
+    }
+
+    public String GetGroupCode(int id,int WeekId){
+        String query = "SELECT Code FROM " + TABLE_Weeks + " Where GroupID = "+ id + " And Week = " + WeekId;
+        SQLiteDatabase db = this.getReadableDatabase();
+        String result="";
         Cursor cursor = db.rawQuery(query,null);
         if (cursor.moveToFirst()) {
             do {
-                result.add(cursor.getString(0));
+                result = cursor.getString(0);
             }while (cursor.moveToNext());
         }
         return result;
