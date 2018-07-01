@@ -7,8 +7,15 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.GridView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
+import Model.DBHandler;
+import Model.RecordAdapter;
 import mytechcorp.ir.coach.R;
 
 /**
@@ -30,6 +37,9 @@ public class RecordFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+    private DBHandler dbHandler;
+    GridView gvRecord;
+
 
     public RecordFragment() {
         // Required empty public constructor
@@ -65,8 +75,12 @@ public class RecordFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater,ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_record,container,false);
+        View view = inflater.inflate(R.layout.fragment_record,container,false);
+        gvRecord = view.findViewById(R.id.gvRecord);
+        dbHandler = new DBHandler(getActivity());
+
+        gvRecord.setAdapter(new RecordAdapter(getActivity(),R.layout.record_item,dbHandler.GetGroupName(1)));
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
