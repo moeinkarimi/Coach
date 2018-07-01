@@ -20,7 +20,9 @@
                 android:id="@+id/spGroupMaket"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp" />
+                android:layout_margin="10dp"
+                android:background="@drawable/btnseletor"
+                android:dropDownWidth="250dp" />
 
             <RadioGroup
                 android:id="@+id/rdbGroup1"

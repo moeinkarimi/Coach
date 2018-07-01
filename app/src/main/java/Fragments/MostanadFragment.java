@@ -8,9 +8,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
 
+import Model.DBHandler;
 import Model.GenerateCode;
 import mytechcorp.ir.coach.R;
 import mytechcorp.ir.coach.TextViewPlus;
@@ -29,6 +33,8 @@ public class MostanadFragment extends Fragment {
     EditText txtGroup,txtGroup2,txtScore;
     Button btnGenerate,btnGenerate2;
     TextViewPlus tvCode,tvCode2;
+    private Spinner spGroupMostanad;
+    private DBHandler dbHandler;
 
 
     public MostanadFragment() {
@@ -57,27 +63,35 @@ public class MostanadFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater,ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_mostanad,container,false);
+        dbHandler = new DBHandler(getActivity());
         tf = Typeface.createFromAsset(getActivity().getAssets(),"fonts/IRANSansMobile_Light.ttf");
-        txtGroup = view.findViewById(R.id.txtGroup);
+//        txtGroup = view.findViewById(R.id.txtGroup);
         btnGenerate = view.findViewById(R.id.btnGenerate);
         tvCode = view.findViewById(R.id.tvCode);
         txtGroup2 = view.findViewById(R.id.txtGroup2);
         txtScore = view.findViewById(R.id.txtScore);
         btnGenerate2 = view.findViewById(R.id.btnGenerate2);
+        spGroupMostanad = view.findViewById(R.id.spGroupMostanad);
         tvCode2 = view.findViewById(R.id.tvCode2);
-        txtGroup.setTypeface(tf);
+//        txtGroup.setTypeface(tf);
         btnGenerate.setTypeface(tf);
         txtGroup2.setTypeface(tf);
         txtScore.setTypeface(tf);
         btnGenerate2.setTypeface(tf);
 
 
+        try{
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, dbHandler.GetGroupName(1));
+            spGroupMostanad.setAdapter(adapter);
+        }catch (Exception ex){
+            Toast.makeText(getActivity(), ex.getMessage(), Toast.LENGTH_LONG).show();
+        }
         btnGenerate.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
                 GenerateCode generateCode = new GenerateCode();
-                tvCode.setText(generateCode.GenerateCode(18,txtGroup.getText().toString(),"10"));
+                tvCode.setText(generateCode.GenerateCode(18,dbHandler.GetGroupCode(spGroupMostanad.getSelectedItemPosition()+1,1),"10"));
             }
         });
 

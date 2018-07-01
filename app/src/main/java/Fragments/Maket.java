@@ -90,16 +90,7 @@ public class Maket extends Fragment {
         rdbGood.setTypeface(tf);
 
         try{
-            String[] strings = new String[4];
-            strings[0] = dbHandler.GetGroupName(1)[0];
-            strings[1] = dbHandler.GetGroupName(1)[1];
-            strings[2] = dbHandler.GetGroupName(1)[2];
-            strings[3] = dbHandler.GetGroupName(1)[3];
-            Log.d("0",strings[0] );
-            Log.d("1",strings[1] );
-            Log.d("2",strings[2] );
-            Log.d("3",strings[3] );
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, strings);
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, dbHandler.GetGroupName(1));
             spGroupMaket.setAdapter(adapter);
         }catch (Exception ex){
             Toast.makeText(getActivity(), ex.getMessage(), Toast.LENGTH_LONG).show();
@@ -109,6 +100,7 @@ public class Maket extends Fragment {
             @Override
             public void onClick(View view) {
                 GenerateCode generateCode = new GenerateCode();
+                Log.d(" a ", dbHandler.GetGroupCode(spGroupMaket.getSelectedItemPosition()+1,1));
                 if (rdbGood.isChecked()){
                     tvCode.setText(generateCode.GenerateCode(76,dbHandler.GetGroupCode(spGroupMaket.getSelectedItemPosition()+1,1),"20"));
                 }

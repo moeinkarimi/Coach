@@ -23,18 +23,11 @@
                 android:text="تحویل فایل"
                 android:textSize="18sp" />
 
-            <EditText
-                android:id="@+id/txtGroup"
+            <Spinner
+                android:id="@+id/spGroupMostanad"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/edittextlayout"
-                android:ems="10"
-                android:gravity="center"
-                android:hint="کد گروه"
-                android:inputType="textPersonName"
-                android:padding="10dp"
-                android:textColor="@color/text" />
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp" />
 
             <Button
                 android:id="@+id/btnGenerate"

@@ -186,7 +186,7 @@ public class EnterActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton,boolean b) {
         if (cbxGp3.isChecked()){
             cbxGp4.setEnabled(true);
-            tvpGp3.setText("99");
+            tvpGp3.setText("84");
         }
         else {
             cbxGp4.setEnabled(false);
@@ -200,7 +200,7 @@ public class EnterActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton,boolean b) {
                 if (cbxGp4.isChecked()){
                     cbxGp5.setEnabled(true);
-                    tvpGp4.setText("79");
+                    tvpGp4.setText("41");
                 }
                 else {
                     cbxGp5.setEnabled(false);
@@ -242,7 +242,7 @@ public class EnterActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton,boolean b) {
                 if (cbxGp7.isChecked()){
                     cbxGp8.setEnabled(true);
-                    tvpGp7.setText("41");
+                    tvpGp7.setText("21");
                 }
                 else {
                     cbxGp8.setEnabled(false);
@@ -256,7 +256,7 @@ public class EnterActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton,boolean b) {
                 if (cbxGp8.isChecked()){
                     cbxGp9.setEnabled(true);
-                    tvpGp8.setText("79");
+                    tvpGp8.setText("78");
                 }
                 else {
                     cbxGp9.setEnabled(false);
@@ -377,7 +377,7 @@ public class EnterActivity extends AppCompatActivity {
 
                 if (cbxGp16.isChecked()){
                     cbxGp17.setEnabled(true);
-                    tvpGp16.setText("84");
+                    tvpGp16.setText("54");
                 }
                 else {
                     cbxGp17.setEnabled(false);
