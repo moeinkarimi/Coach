@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="rtl"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/btnnormalstyle"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <mytechcorp.ir.coach.TextViewPlus
+            android:id="@+id/tvpCode2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="5dp"
+            android:layout_weight="0"
+            android:padding="5dp"
+            android:textAlignment="center"
+            android:textColor="@color/text"
+            android:textSize="18sp" />
+
+        <mytechcorp.ir.coach.TextViewPlus
+            android:id="@+id/tvpGroupName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="0.3"
+            android:padding="5dp"
+            android:text="گروه"
+            android:textColor="@color/text"
+            android:textSize="18sp" />
+
+        <mytechcorp.ir.coach.TextViewPlus
+            android:id="@+id/tvpRecord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="0.3"
+            android:padding="5dp"
+            android:textAlignment="center"
+            android:textColor="@color/text"
+            android:textSize="18sp" />
+
+        <mytechcorp.ir.coach.TextViewPlus
+            android:id="@+id/tvpCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight=".3"
+            android:padding="5dp"
+            android:text="اینجا را لمس کنید"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            android:textSize="18sp" />
+    </LinearLayout>
+</LinearLayout>

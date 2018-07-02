@@ -5,7 +5,8 @@
     <color name="colorAccent">#FF4081</color>
     <color name="squarecolor">#abffffff</color>
     <color name="white">#ffffff</color>
+    <color name="red">#e12a2a</color>
     <color name="normalButton">#018a97</color>
     <color name="selectedButton">#1d697c</color>
-    <color name="text">#030303</color>
+    <color name="text">#212121</color>
 </resources>

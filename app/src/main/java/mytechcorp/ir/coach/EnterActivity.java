@@ -21,6 +21,7 @@ import java.util.Random;
 import Model.DBHandler;
 import Model.FirstRun;
 import Model.Groups;
+import Model.Record;
 
 public class EnterActivity extends AppCompatActivity {
 
@@ -521,22 +522,32 @@ public class EnterActivity extends AppCompatActivity {
     public void cbxsGp(){
         // 1
         if (cbxGp1.isChecked()){
-            if(!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 1))
+            if(!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 1)) {
                 dbHandler.AddWeeks(
                         new Groups(
                                 1,
                                 0,
-                                spWeek.getSelectedItemPosition()+1,
+                                spWeek.getSelectedItemPosition() + 1,
                                 tvpGp1.getText().toString()
                         )
                 );
+                dbHandler.AddRecord(
+                        new Record(
+                                1,
+                                spWeek.getSelectedItemPosition() + 1,
+                                0,
+                                0,
+                                0
+                        )
+                );
+            }
             else if (dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 1)){
                 Toast.makeText(this, "گروه 1 قبلا اضافه شده", Toast.LENGTH_SHORT).show();
             }
         }
         // 2
         if (cbxGp2.isChecked()){
-            if(!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 2))
+            if(!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 2)){
             dbHandler.AddWeeks(
                     new Groups(
                             2,
@@ -545,13 +556,23 @@ public class EnterActivity extends AppCompatActivity {
                             tvpGp2.getText().toString()
                     )
             );
+                dbHandler.AddRecord(
+                        new Record(
+                                2,
+                                spWeek.getSelectedItemPosition() + 1,
+                                0,
+                                0,
+                                0
+                        )
+                );
+            }
             else if (dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 2)){
                 Toast.makeText(this, "گروه 2 قبلا اضافه شده", Toast.LENGTH_SHORT).show();
             }
         }
         // 3
         if (cbxGp3.isChecked()){
-            if (!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 3))
+            if (!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 3)){
             dbHandler.AddWeeks(
                     new Groups(
                             3,
@@ -560,13 +581,23 @@ public class EnterActivity extends AppCompatActivity {
                             tvpGp3.getText().toString()
                     )
             );
+                dbHandler.AddRecord(
+                        new Record(
+                                3,
+                                spWeek.getSelectedItemPosition() + 1,
+                                0,
+                                0,
+                                0
+                        )
+                );
+            }
             else if (dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 2)){
                 Toast.makeText(this, "گروه 3 قبلا اضافه شده", Toast.LENGTH_SHORT).show();
             }
         }
         // 4
         if (cbxGp4.isChecked()){
-            if(!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 4))
+            if(!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 4)){
             dbHandler.AddWeeks(
                     new Groups(
                             4,
@@ -575,13 +606,23 @@ public class EnterActivity extends AppCompatActivity {
                             tvpGp4.getText().toString()
                     )
             );
+                dbHandler.AddRecord(
+                        new Record(
+                                4,
+                                spWeek.getSelectedItemPosition() + 1,
+                                0,
+                                0,
+                                0
+                        )
+                );
+            }
             else if (dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 4)){
                 Toast.makeText(this, "گروه 4 قبلا اضافه شده", Toast.LENGTH_SHORT).show();
             }
         }
         // 5
         if (cbxGp5.isChecked()){
-            if(!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 5))
+            if(!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 5)){
             dbHandler.AddWeeks(
                     new Groups(
                             5,
@@ -590,13 +631,23 @@ public class EnterActivity extends AppCompatActivity {
                             tvpGp5.getText().toString()
                     )
             );
+                dbHandler.AddRecord(
+                        new Record(
+                                5,
+                                spWeek.getSelectedItemPosition() + 1,
+                                0,
+                                0,
+                                0
+                        )
+                );
+            }
             else if (dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 5)){
                 Toast.makeText(this, "گروه 5 قبلا اضافه شده", Toast.LENGTH_SHORT).show();
             }
         }
         // 6
         if (cbxGp6.isChecked()){
-            if(!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 6))
+            if(!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 6)){
             dbHandler.AddWeeks(
                     new Groups(
                             6,
@@ -605,13 +656,23 @@ public class EnterActivity extends AppCompatActivity {
                             tvpGp6.getText().toString()
                     )
             );
+                dbHandler.AddRecord(
+                        new Record(
+                                6,
+                                spWeek.getSelectedItemPosition() + 1,
+                                0,
+                                0,
+                                0
+                        )
+                );
+            }
             else if (dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 6)){
                 Toast.makeText(this, "گروه 6 قبلا اضافه شده", Toast.LENGTH_SHORT).show();
             }
         }
         // 7
         if (cbxGp7.isChecked()){
-            if (!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 7))
+            if (!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 7)){
             dbHandler.AddWeeks(
                     new Groups(
                             7,
@@ -620,13 +681,23 @@ public class EnterActivity extends AppCompatActivity {
                             tvpGp7.getText().toString()
                     )
             );
+                dbHandler.AddRecord(
+                        new Record(
+                                7,
+                                spWeek.getSelectedItemPosition() + 1,
+                                0,
+                                0,
+                                0
+                        )
+                );
+            }
             else if (dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 7)){
                 Toast.makeText(this, "گروه 7 قبلا اضافه شده", Toast.LENGTH_SHORT).show();
             }
         }
         // 8
         if (cbxGp8.isChecked()){
-            if(!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 8))
+            if(!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 8)){
             dbHandler.AddWeeks(
                     new Groups(
                             8,
@@ -635,13 +706,23 @@ public class EnterActivity extends AppCompatActivity {
                             tvpGp8.getText().toString()
                     )
             );
+                dbHandler.AddRecord(
+                        new Record(
+                                8,
+                                spWeek.getSelectedItemPosition() + 1,
+                                0,
+                                0,
+                                0
+                        )
+                );
+            }
             else if (dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 8)){
                 Toast.makeText(this, "گروه 8 قبلا اضافه شده", Toast.LENGTH_SHORT).show();
             }
         }
         // 9
         if (cbxGp9.isChecked()){
-            if(!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 9))
+            if(!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 9)){
             dbHandler.AddWeeks(
                     new Groups(
                             9,
@@ -650,13 +731,23 @@ public class EnterActivity extends AppCompatActivity {
                             tvpGp9.getText().toString()
                     )
             );
+                dbHandler.AddRecord(
+                        new Record(
+                                9,
+                                spWeek.getSelectedItemPosition() + 1,
+                                0,
+                                0,
+                                0
+                        )
+                );
+            }
             else if (dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 9)){
                 Toast.makeText(this, "گروه 9 قبلا اضافه شده", Toast.LENGTH_SHORT).show();
             }
         }
         // 10
         if (cbxGp10.isChecked()){
-            if(!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 10))
+            if(!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 10)){
             dbHandler.AddWeeks(
                     new Groups(
                             10,
@@ -665,13 +756,23 @@ public class EnterActivity extends AppCompatActivity {
                             tvpGp10.getText().toString()
                     )
             );
+                dbHandler.AddRecord(
+                        new Record(
+                                10,
+                                spWeek.getSelectedItemPosition() + 1,
+                                0,
+                                0,
+                                0
+                        )
+                );
+            }
             else if (dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 10)){
                 Toast.makeText(this, "گروه 10 قبلا اضافه شده", Toast.LENGTH_SHORT).show();
             }
         }
         // 11
         if (cbxGp11.isChecked()){
-            if(!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 11))
+            if(!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 11)){
             dbHandler.AddWeeks(
                     new Groups(
                             11,
@@ -680,13 +781,23 @@ public class EnterActivity extends AppCompatActivity {
                             tvpGp11.getText().toString()
                     )
             );
+                dbHandler.AddRecord(
+                        new Record(
+                                11,
+                                spWeek.getSelectedItemPosition() + 1,
+                                0,
+                                0,
+                                0
+                        )
+                );
+            }
             else if (dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 11)){
                 Toast.makeText(this, "گروه 11 قبلا اضافه شده", Toast.LENGTH_SHORT).show();
             }
         }
         // 12
         if (cbxGp12.isChecked()){
-            if(!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 12))
+            if(!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 12)){
             dbHandler.AddWeeks(
                     new Groups(
                             12,
@@ -695,13 +806,23 @@ public class EnterActivity extends AppCompatActivity {
                             tvpGp12.getText().toString()
                     )
             );
+                dbHandler.AddRecord(
+                        new Record(
+                                12,
+                                spWeek.getSelectedItemPosition() + 1,
+                                0,
+                                0,
+                                0
+                        )
+                );
+            }
             else if (dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 12)){
                 Toast.makeText(this, "گروه 12 قبلا اضافه شده", Toast.LENGTH_SHORT).show();
             }
         }
         // 13
         if (cbxGp13.isChecked()){
-            if(!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 13))
+            if(!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 13)){
             dbHandler.AddWeeks(
                     new Groups(
                             13,
@@ -710,13 +831,23 @@ public class EnterActivity extends AppCompatActivity {
                             tvpGp13.getText().toString()
                     )
             );
+                dbHandler.AddRecord(
+                        new Record(
+                                13,
+                                spWeek.getSelectedItemPosition() + 1,
+                                0,
+                                0,
+                                0
+                        )
+                );
+            }
             else if (dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 13)){
                 Toast.makeText(this, "گروه 13 قبلا اضافه شده", Toast.LENGTH_SHORT).show();
             }
         }
         // 14
         if (cbxGp14.isChecked()){
-            if(!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 14))
+            if(!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 14)){
             dbHandler.AddWeeks(
                     new Groups(
                             14,
@@ -725,13 +856,23 @@ public class EnterActivity extends AppCompatActivity {
                             tvpGp14.getText().toString()
                     )
             );
+                dbHandler.AddRecord(
+                        new Record(
+                                14,
+                                spWeek.getSelectedItemPosition() + 1,
+                                0,
+                                0,
+                                0
+                        )
+                );
+            }
             else if (dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 14)){
                 Toast.makeText(this, "گروه 14 قبلا اضافه شده", Toast.LENGTH_SHORT).show();
             }
         }
         // 15
         if (cbxGp15.isChecked()){
-            if(!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 15))
+            if(!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 15)){
             dbHandler.AddWeeks(
                     new Groups(
                             15,
@@ -740,13 +881,23 @@ public class EnterActivity extends AppCompatActivity {
                             tvpGp15.getText().toString()
                     )
             );
+                dbHandler.AddRecord(
+                        new Record(
+                                15,
+                                spWeek.getSelectedItemPosition() + 1,
+                                0,
+                                0,
+                                0
+                        )
+                );
+            }
             else if (dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 15)){
                 Toast.makeText(this, "گروه 15 قبلا اضافه شده", Toast.LENGTH_SHORT).show();
             }
         }
         // 16
         if (cbxGp16.isChecked()){
-            if(!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 16))
+            if(!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 16)){
             dbHandler.AddWeeks(
                     new Groups(
                             16,
@@ -755,13 +906,23 @@ public class EnterActivity extends AppCompatActivity {
                             tvpGp16.getText().toString()
                     )
             );
+                dbHandler.AddRecord(
+                        new Record(
+                                16,
+                                spWeek.getSelectedItemPosition() + 1,
+                                0,
+                                0,
+                                0
+                        )
+                );
+            }
             else if (dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 16)){
                 Toast.makeText(this, "گروه 16 قبلا اضافه شده", Toast.LENGTH_SHORT).show();
             }
         }
         // 17
         if (cbxGp17.isChecked()){
-            if (!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 17))
+            if (!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 17)){
             dbHandler.AddWeeks(
                     new Groups(
                             17,
@@ -770,13 +931,23 @@ public class EnterActivity extends AppCompatActivity {
                             tvpGp17.getText().toString()
                     )
             );
+                dbHandler.AddRecord(
+                        new Record(
+                                17,
+                                spWeek.getSelectedItemPosition() + 1,
+                                0,
+                                0,
+                                0
+                        )
+                );
+            }
             else if (dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 17)){
                 Toast.makeText(this, "گروه 17 قبلا اضافه شده", Toast.LENGTH_SHORT).show();
             }
         }
         // 18
         if (cbxGp18.isChecked() ){
-            if (!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 18))
+            if (!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 18)){
             dbHandler.AddWeeks(
                     new Groups(
                             18,
@@ -785,13 +956,23 @@ public class EnterActivity extends AppCompatActivity {
                             tvpGp18.getText().toString()
                     )
             );
+                dbHandler.AddRecord(
+                        new Record(
+                                18,
+                                spWeek.getSelectedItemPosition() + 1,
+                                0,
+                                0,
+                                0
+                        )
+                );
+            }
             else if (dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 18)){
                 Toast.makeText(this, "گروه 18 قبلا اضافه شده", Toast.LENGTH_SHORT).show();
             }
         }
         // 19
         if (cbxGp19.isChecked()){
-            if(!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 19))
+            if(!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 19)){
             dbHandler.AddWeeks(
                     new Groups(
                             19,
@@ -800,13 +981,23 @@ public class EnterActivity extends AppCompatActivity {
                             tvpGp19.getText().toString()
                     )
             );
+                dbHandler.AddRecord(
+                        new Record(
+                                19,
+                                spWeek.getSelectedItemPosition() + 1,
+                                0,
+                                0,
+                                0
+                        )
+                );
+            }
             else if (dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 19)){
                 Toast.makeText(this, "گروه 19 قبلا اضافه شده", Toast.LENGTH_SHORT).show();
             }
         }
         // 20
         if (cbxGp20.isChecked()){
-            if (!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 20))
+            if (!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 20)){
             dbHandler.AddWeeks(
                     new Groups(
                             20,
@@ -815,13 +1006,23 @@ public class EnterActivity extends AppCompatActivity {
                             tvpGp20.getText().toString()
                     )
             );
+                dbHandler.AddRecord(
+                        new Record(
+                                20,
+                                spWeek.getSelectedItemPosition() + 1,
+                                0,
+                                0,
+                                0
+                        )
+                );
+            }
             else if (dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 20)){
                 Toast.makeText(this, "گروه 20 قبلا اضافه شده", Toast.LENGTH_SHORT).show();
             }
         }
         // 21
         if (cbxGp21.isChecked()){
-            if (!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 21))
+            if (!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 21)){
             dbHandler.AddWeeks(
                     new Groups(
                             21,
@@ -830,13 +1031,23 @@ public class EnterActivity extends AppCompatActivity {
                             tvpGp21.getText().toString()
                     )
             );
+                dbHandler.AddRecord(
+                        new Record(
+                                21,
+                                spWeek.getSelectedItemPosition() + 1,
+                                0,
+                                0,
+                                0
+                        )
+                );
+            }
             else if (dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 21)){
                 Toast.makeText(this, "گروه 21 قبلا اضافه شده", Toast.LENGTH_SHORT).show();
             }
         }
         // 22
         if (cbxGp22.isChecked() ){
-            if (!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 22))
+            if (!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 22)){
             dbHandler.AddWeeks(
                     new Groups(
                             22,
@@ -845,13 +1056,23 @@ public class EnterActivity extends AppCompatActivity {
                             tvpGp22.getText().toString()
                     )
             );
+                dbHandler.AddRecord(
+                        new Record(
+                                22,
+                                spWeek.getSelectedItemPosition() + 1,
+                                0,
+                                0,
+                                0
+                        )
+                );
+            }
             else if (dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 22)){
                 Toast.makeText(this, "گروه 22 قبلا اضافه شده", Toast.LENGTH_SHORT).show();
             }
         }
         // 23
         if (cbxGp23.isChecked()){
-            if (!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 23))
+            if (!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 23)){
             dbHandler.AddWeeks(
                     new Groups(
                             23,
@@ -860,13 +1081,23 @@ public class EnterActivity extends AppCompatActivity {
                             tvpGp23.getText().toString()
                     )
             );
+                dbHandler.AddRecord(
+                        new Record(
+                                23,
+                                spWeek.getSelectedItemPosition() + 1,
+                                0,
+                                0,
+                                0
+                        )
+                );
+            }
             else if (dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 23)){
                 Toast.makeText(this, "گروه 23 قبلا اضافه شده", Toast.LENGTH_SHORT).show();
             }
         }
         // 24
         if (cbxGp24.isChecked()){
-            if (!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 24))
+            if (!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 24)){
             dbHandler.AddWeeks(
                     new Groups(
                             24,
@@ -875,13 +1106,23 @@ public class EnterActivity extends AppCompatActivity {
                             tvpGp24.getText().toString()
                     )
             );
+                dbHandler.AddRecord(
+                        new Record(
+                                24,
+                                spWeek.getSelectedItemPosition() + 1,
+                                0,
+                                0,
+                                0
+                        )
+                );
+            }
             else if (dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 24)){
                 Toast.makeText(this, "گروه 24 قبلا اضافه شده", Toast.LENGTH_SHORT).show();
             }
         }
         // 25
         if (cbxGp25.isChecked()){
-            if(!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 25))
+            if(!dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 25)){
             dbHandler.AddWeeks(
                     new Groups(
                             25,
@@ -890,6 +1131,16 @@ public class EnterActivity extends AppCompatActivity {
                             tvpGp25.getText().toString()
                     )
             );
+                dbHandler.AddRecord(
+                        new Record(
+                                25,
+                                spWeek.getSelectedItemPosition() + 1,
+                                0,
+                                0,
+                                0
+                        )
+                );
+            }
             else if (dbHandler.GetGroupAddedState(spWeek.getSelectedItemPosition()+1, 25)){
                 Toast.makeText(this, "گروه 25 قبلا اضافه شده", Toast.LENGTH_SHORT).show();
             }
