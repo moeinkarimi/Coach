@@ -1,5 +1,6 @@
 package Fragments;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,21 +60,18 @@ public class RecordFragment extends Fragment {
     TextViewPlus txtCodeGenerated;
     private Spinner spGroupRecord;
     private SQLiteDatabase db;
+    private int WeekID = 0;
 
     public RecordFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment RecordFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static RecordFragment newInstance(String param1,String param2) {
+    @SuppressLint("ValidFragment")
+    public RecordFragment(int weekID) {
+        WeekID = weekID;
+    }
+
+    public static RecordFragment newInstance(String param1, String param2) {
         RecordFragment fragment = new RecordFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1,param1);
@@ -95,6 +94,7 @@ public class RecordFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_record,container,false);
         dbHandler = new DBHandler(getActivity());
+        Log.d("WeekId", String.valueOf(WeekID));
         tf = Typeface.createFromAsset(getActivity().getAssets(),"fonts/IRANSansMobile_Light.ttf");
         gvRecord = view.findViewById(R.id.gvRecord);
         btnGenerate = view.findViewById(R.id.btnSave);
@@ -145,7 +145,7 @@ public class RecordFragment extends Fragment {
                 dbHandler.UpdateRecord(
                         new Record(
                                 spGroupRecord.getSelectedItemPosition()+1,
-                                1,
+                                WeekID,
                                 r1,
                                 r2,
                                 r3
@@ -222,16 +222,6 @@ public class RecordFragment extends Fragment {
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);

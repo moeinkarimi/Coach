@@ -1,5 +1,6 @@
 package Fragments;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -35,13 +36,19 @@ public class MostanadFragment extends Fragment {
     TextViewPlus tvCode,tvCode2;
     private Spinner spGroupMostanad;
     private DBHandler dbHandler;
+    private int WeekID = 0;
 
 
     public MostanadFragment() {
         // Required empty public constructor
     }
 
-    public static MostanadFragment newInstance(String param1,String param2) {
+    @SuppressLint("ValidFragment")
+    public MostanadFragment(int weekID) {
+        WeekID = weekID;
+    }
+
+    public static MostanadFragment newInstance(String param1, String param2) {
         MostanadFragment fragment = new MostanadFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1,param1);

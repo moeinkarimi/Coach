@@ -1,5 +1,6 @@
 package Fragments;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -23,14 +24,6 @@ import Model.GenerateCode;
 import mytechcorp.ir.coach.R;
 import mytechcorp.ir.coach.TextViewPlus;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link Maket.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link Maket#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class Maket extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";
@@ -47,12 +40,18 @@ public class Maket extends Fragment {
     RadioButton rdbGood, rdbMiddling, rdbWeak;
     Spinner spGroupMaket;
     private DBHandler dbHandler;
+    private int WeekID = 0;
 
     public Maket() {
         // Required empty public constructor
     }
 
-    public static Maket newInstance(String param1,String param2) {
+    @SuppressLint("ValidFragment")
+    public Maket(int weekID) {
+        WeekID = weekID;
+    }
+
+    public static Maket newInstance(String param1, String param2) {
         Maket fragment = new Maket();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1,param1);

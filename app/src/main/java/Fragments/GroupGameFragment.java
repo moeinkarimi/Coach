@@ -1,5 +1,6 @@
 package Fragments;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -30,13 +31,18 @@ public class GroupGameFragment extends Fragment {
     EditText txtGroup;
     Button btnGenerate;
     TextViewPlus tvCode;
-
+    private int WeekID = 0;
 
     public GroupGameFragment() {
         // Required empty public constructor
     }
 
-    public static GroupGameFragment newInstance(String param1,String param2) {
+    @SuppressLint("ValidFragment")
+    public GroupGameFragment(int weekID) {
+        WeekID = weekID;
+    }
+
+    public static GroupGameFragment newInstance(String param1, String param2) {
         GroupGameFragment fragment = new GroupGameFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1,param1);

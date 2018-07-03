@@ -103,12 +103,33 @@
 
         </LinearLayout>
 
-        <GridView
-            android:id="@+id/gvRecord"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp" />
+            android:layout_marginTop="5dp"
+            android:background="@drawable/btnnormalstyle"
+            android:orientation="vertical">
+
+            <mytechcorp.ir.coach.TextViewPlus
+                android:id="@+id/tvpAlert"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/header"
+                android:padding="5dp"
+                android:text="توجه : برای دریافت کد حتما روی گروه مربوطه را لمس کنید و به کد از پیش داده شده اکتفا نکنید"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <GridView
+                android:id="@+id/gvRecord"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
+                android:scrollbars="vertical">
+
+            </GridView>
+        </LinearLayout>
 
     </LinearLayout>
 
