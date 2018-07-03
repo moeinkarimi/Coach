@@ -19,6 +19,7 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String TABLE_Groups = "Groups";
     private static final String TABLE_Weeks = "Weeks";
     private static final String TABLE_Record = "Record";
+    private static final String TABLE_GameTime = "GameTime";
 
     private static final String ID = "ID";
     private static final String GroupName = "GroupName";
@@ -29,6 +30,7 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String Record1 = "Record1";
     private static final String Record2 = "Record2";
     private static final String Record3 = "Record3";
+    private static final String GameTime = "GameTime";
 
     public DBHandler(Context context) {
         super(context,DATABASE_NAME,null,DATABASE_VERSION);
@@ -59,7 +61,12 @@ public class DBHandler extends SQLiteOpenHelper {
                 + Record3 + " Integer);";//5
         db.execSQL(dbexec2);
 
-
+        String dbexec3 = "CREATE TABLE IF NOT EXISTS "+ TABLE_GameTime +"("
+                + ID + " Integer Primary Key Autoincrement," //0
+                + GroupID + " Integer," //1
+                + Week + " Integer," //2
+                + GameTime + " Text);";//5
+        db.execSQL(dbexec3);
 
     }
 
@@ -101,6 +108,13 @@ public class DBHandler extends SQLiteOpenHelper {
             }
         }
         return false;
+    }
+
+    public int GetGroupCount(int WeekID){
+        String query = "SELECT Count(*) FROM " + TABLE_Weeks + " WHERE Week = " + WeekID;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query,null);
+        return cursor.getCount();
     }
 
     public String[] GetGroupName(int WeekId){
@@ -202,5 +216,28 @@ public class DBHandler extends SQLiteOpenHelper {
 
         db.update(TABLE_Record,values,"Week =? AND GroupID =?",new String[] {String.valueOf(record.getWeek()), String.valueOf(record.getGroupID())});
         db.close();
+    }
+
+    //Group Game
+    public void AddGameTime(GameTime gameTime){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(GroupID, gameTime.getGroupID());
+        values.put(Week, gameTime.getWeek());
+        values.put(GameTime, gameTime.GameTime);
+        db.insert(TABLE_GameTime, null, values);
+        db.close();
+    }
+
+    public boolean CheckGameTime(int WeekID){
+        String countQuery = "SELECT  * FROM " + TABLE_GameTime + " WHERE Week = "+ WeekID;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(countQuery, null);
+        if (cursor.getCount()>0){
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }
