@@ -190,7 +190,124 @@ public class RecordFragment extends Fragment {
                     TextViewPlus tvpCode2 = view.findViewById(R.id.tvpCode2);
                     TextViewPlus tvpRec = view.findViewById(R.id.tvpRecord);
                     GenerateCode generateCode = new GenerateCode();
-                    tvpCode.setText(generateCode.GenerateCode(42,tvpCode2.getText().toString(),tvpRec.getText().toString()));
+                    if (gvRecord.getCount()<4){
+                        switch (i) {
+                            case 0:
+                                tvpCode.setText(generateCode.GenerateCode(42, tvpCode2.getText().toString(), "20"));
+                                break;
+                            case 1:
+                                tvpCode.setText(generateCode.GenerateCode(42, tvpCode2.getText().toString(), "18"));
+                                break;
+                            case 2:
+                                tvpCode.setText(generateCode.GenerateCode(42, tvpCode2.getText().toString(), "16"));
+                                break;
+                        }
+                    }
+                    else if (gvRecord.getCount()>3 && gvRecord.getCount()<8){
+                        switch (i) {
+                            case 0:
+                                tvpCode.setText(generateCode.GenerateCode(42, tvpCode2.getText().toString(), "20"));
+                                break;
+                            case 1:
+                                tvpCode.setText(generateCode.GenerateCode(42, tvpCode2.getText().toString(), "20"));
+                                break;
+                            case 2:
+                                tvpCode.setText(generateCode.GenerateCode(42, tvpCode2.getText().toString(), "18"));
+                                break;
+                            case 3:
+                                tvpCode.setText(generateCode.GenerateCode(42, tvpCode2.getText().toString(), "18"));
+                                break;
+                            case 4:
+                                tvpCode.setText(generateCode.GenerateCode(42, tvpCode2.getText().toString(), "16"));
+                                break;
+                            case 5:
+                                tvpCode.setText(generateCode.GenerateCode(42, tvpCode2.getText().toString(), "16"));
+                                break;
+                            case 6:
+                                tvpCode.setText(generateCode.GenerateCode(42, tvpCode2.getText().toString(), "16"));
+                                break;
+                        }
+                    }
+                    else if (gvRecord.getCount()>7){
+                        switch (i) {
+                            case 0:
+                                tvpCode.setText(generateCode.GenerateCode(42, tvpCode2.getText().toString(), "20"));
+                                break;
+                            case 1:
+                                tvpCode.setText(generateCode.GenerateCode(42, tvpCode2.getText().toString(), "20"));
+                                break;
+                            case 2:
+                                tvpCode.setText(generateCode.GenerateCode(42, tvpCode2.getText().toString(), "20"));
+                                break;
+                            case 3:
+                                tvpCode.setText(generateCode.GenerateCode(42, tvpCode2.getText().toString(), "18"));
+                                break;
+                            case 4:
+                                tvpCode.setText(generateCode.GenerateCode(42, tvpCode2.getText().toString(), "18"));
+                                break;
+                            case 5:
+                                tvpCode.setText(generateCode.GenerateCode(42, tvpCode2.getText().toString(), "18"));
+                                break;
+                            case 6:
+                                tvpCode.setText(generateCode.GenerateCode(42, tvpCode2.getText().toString(), "16"));
+                                break;
+                            case 7:
+                                tvpCode.setText(generateCode.GenerateCode(42, tvpCode2.getText().toString(), "16"));
+                                break;
+                            case 8:
+                                tvpCode.setText(generateCode.GenerateCode(42, tvpCode2.getText().toString(), "16"));
+                                break;
+                            case 9:
+                                tvpCode.setText(generateCode.GenerateCode(42, tvpCode2.getText().toString(), "14"));
+                                break;
+                            case 10:
+                                tvpCode.setText(generateCode.GenerateCode(42, tvpCode2.getText().toString(), "14"));
+                                break;
+                            case 11:
+                                tvpCode.setText(generateCode.GenerateCode(42, tvpCode2.getText().toString(), "14"));
+                                break;
+                            case 12:
+                                tvpCode.setText(generateCode.GenerateCode(42, tvpCode2.getText().toString(), "12"));
+                                break;
+                            case 13:
+                                tvpCode.setText(generateCode.GenerateCode(42, tvpCode2.getText().toString(), "12"));
+                                break;
+                            case 14:
+                                tvpCode.setText(generateCode.GenerateCode(42, tvpCode2.getText().toString(), "12"));
+                                break;
+                            case 15:
+                                tvpCode.setText(generateCode.GenerateCode(42, tvpCode2.getText().toString(), "10"));
+                                break;
+                            case 16:
+                                tvpCode.setText(generateCode.GenerateCode(42, tvpCode2.getText().toString(), "10"));
+                                break;
+                            case 17:
+                                tvpCode.setText(generateCode.GenerateCode(42, tvpCode2.getText().toString(), "10"));
+                                break;
+                            case 18:
+                                tvpCode.setText(generateCode.GenerateCode(42, tvpCode2.getText().toString(), "08"));
+                                break;
+                            case 19:
+                                tvpCode.setText(generateCode.GenerateCode(42, tvpCode2.getText().toString(), "08"));
+                                break;
+                            case 20:
+                                tvpCode.setText(generateCode.GenerateCode(42, tvpCode2.getText().toString(), "08"));
+                                break;
+                            case 21:
+                                tvpCode.setText(generateCode.GenerateCode(42, tvpCode2.getText().toString(), "06"));
+                                break;
+                            case 22:
+                                tvpCode.setText(generateCode.GenerateCode(42, tvpCode2.getText().toString(), "06"));
+                                break;
+                            case 23:
+                                tvpCode.setText(generateCode.GenerateCode(42, tvpCode2.getText().toString(), "06"));
+                                break;
+                            case 24:
+                                tvpCode.setText(generateCode.GenerateCode(42, tvpCode2.getText().toString(), "04"));
+                                break;
+                        }
+                    }
+
                     if(tvpCode.length()<7){
                         tvpCode.append("0");
                     }

@@ -5,9 +5,23 @@
     tools:context="Fragments.GetFileFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Get File" />
+        android:orientation="vertical">
 
+        <Button
+            android:id="@+id/btnGet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button" />
+
+        <mytechcorp.ir.coach.TextViewPlus
+            android:id="@+id/tvpFile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textSize="18sp" />
+    </LinearLayout>
 </FrameLayout>

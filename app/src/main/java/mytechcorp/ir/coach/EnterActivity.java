@@ -1,10 +1,13 @@
 package mytechcorp.ir.coach;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -128,6 +131,11 @@ public class EnterActivity extends AppCompatActivity {
         cbxGp24.setTypeface(tf);
         cbxGp25.setTypeface(tf);
         cbxGPsEnables();
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission_group.STORAGE) != PackageManager.PERMISSION_GRANTED)
+        {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission_group.STORAGE}, 1);
+        }
         firstRun();
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item,new String[]{"هفته اول" ,"هفته دوم","هفته سوم","هفته چهارم","هفته پنجم","هفته ششم"});
         spWeek.setAdapter(adapter);
@@ -1152,10 +1160,10 @@ public class EnterActivity extends AppCompatActivity {
         db = dbHandler.getReadableDatabase();
         Cursor cursor = db.rawQuery(query,null);
         cursor.moveToFirst();
-
         if (cursor.getCount() <= 0) {
             FirstRun firstRun = new FirstRun();
             firstRun.AddGroupNames(this);
+            btnEnter.setEnabled(false);
         }
     }
 }

@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Coach</string>
     <string name="Font">fonts/IRANSansMobile_Light.ttf</string>
+    <string name="title_choose_file">انتخاب کنید</string>
 
 
 </resources>
