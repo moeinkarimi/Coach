@@ -2,7 +2,7 @@ package Model;
 
 public class GameTime {
     int ID, Week, GroupID;
-    String GameTime;
+    String GameTime, GroupName, Code;
 
     public GameTime() {
     }
@@ -13,7 +13,13 @@ public class GameTime {
         GameTime = gameTime;
     }
 
-    public GameTime(int ID,int week,int groupID,String gameTime) {
+    public GameTime(String gameTime, String groupName, String code) {
+        GameTime = gameTime;
+        GroupName = groupName;
+        Code = code;
+    }
+
+    public GameTime(int ID, int week, int groupID, String gameTime) {
         this.ID = ID;
         Week = week;
         GroupID = groupID;
@@ -50,5 +56,21 @@ public class GameTime {
 
     public void setGameTime(String gameTime) {
         GameTime = gameTime;
+    }
+
+    public String getGroupName() {
+        return GroupName;
+    }
+
+    public void setGroupName(String groupName) {
+        GroupName = groupName;
+    }
+
+    public String getCode() {
+        return Code;
+    }
+
+    public void setCode(String code) {
+        Code = code;
     }
 }

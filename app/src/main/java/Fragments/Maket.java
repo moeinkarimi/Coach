@@ -99,15 +99,15 @@ public class Maket extends Fragment {
             @Override
             public void onClick(View view) {
                 GenerateCode generateCode = new GenerateCode();
-                Log.d(" a ", dbHandler.GetGroupCode(spGroupMaket.getSelectedItemPosition()+1,1));
+                Log.d(" a ", dbHandler.GetGroupCode(spGroupMaket.getSelectedItemPosition()+1,WeekID));
                 if (rdbGood.isChecked()){
-                    tvCode.setText(generateCode.GenerateCode(76,dbHandler.GetGroupCode(spGroupMaket.getSelectedItemPosition()+1,1),"20"));
+                    tvCode.setText(generateCode.GenerateCode(76,dbHandler.GetGroupCode(spGroupMaket.getSelectedItemPosition()+1,WeekID),"20"));
                 }
                 else if (rdbMiddling.isChecked()){
-                    tvCode.setText(generateCode.GenerateCode(76,dbHandler.GetGroupCode(spGroupMaket.getSelectedItemPosition()+1,1),"15"));
+                    tvCode.setText(generateCode.GenerateCode(76,dbHandler.GetGroupCode(spGroupMaket.getSelectedItemPosition()+1,WeekID),"15"));
                 }
                 else if (rdbWeak.isChecked()){
-                    tvCode.setText(generateCode.GenerateCode(76,dbHandler.GetGroupCode(spGroupMaket.getSelectedItemPosition()+1,1),"10"));
+                    tvCode.setText(generateCode.GenerateCode(76,dbHandler.GetGroupCode(spGroupMaket.getSelectedItemPosition()+1,WeekID),"10"));
                 }
                 else
                     Toast.makeText(getActivity(), "لطفا یک گزینه را انتخاب نمایید.", Toast.LENGTH_LONG).show();

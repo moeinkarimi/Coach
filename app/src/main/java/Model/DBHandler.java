@@ -14,7 +14,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
 
-    private static final String DATABASE_NAME = "Coach";
+    private static final String DATABASE_NAME = "Coach.db";
 
     private static final String TABLE_Groups = "Groups";
     private static final String TABLE_Weeks = "Weeks";
@@ -111,7 +111,7 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 
     public int GetGroupCount(int WeekID){
-        String query = "SELECT Count(*) FROM " + TABLE_Weeks + " WHERE Week = " + WeekID;
+        String query = "SELECT * FROM " + TABLE_Weeks + " WHERE Week = " + WeekID;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(query,null);
         return cursor.getCount();
@@ -239,5 +239,29 @@ public class DBHandler extends SQLiteOpenHelper {
         else {
             return false;
         }
+    }
+
+    public void DeleteGrouping(int WeekId){
+        SQLiteDatabase db = this.getReadableDatabase();
+        db.delete(TABLE_GameTime, Week + "=" + WeekId, null);
+    }
+
+    public List<GameTime> GetListOfGames(int WeekId){
+        List<GameTime> gameTimesList = new ArrayList<GameTime>();
+        String query = "SELECT G.GroupName , GT.GameTime , W.Code FROM Groups"
+                + " G Inner Join GameTime GT on G.ID = GT.GroupID Inner Join Weeks "
+                + "W on GT.ID = W.GroupID Where GT.Week = " + WeekId +" Order by GameTime";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            do {
+                GameTime gameTime = new GameTime();
+                gameTime.setGroupName(cursor.getString(0));
+                gameTime.setGameTime(cursor.getString(1));
+                gameTime.setCode(cursor.getString(2));
+                gameTimesList.add(gameTime);
+            }while (cursor.moveToNext());
+        }
+        return gameTimesList;
     }
 }

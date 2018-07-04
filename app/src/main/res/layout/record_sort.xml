@@ -25,6 +25,16 @@
             android:textSize="18sp" />
 
         <mytechcorp.ir.coach.TextViewPlus
+            android:id="@+id/tvpCode3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:textAlignment="center"
+            android:textColor="@color/text"
+            android:textSize="18sp" />
+
+        <mytechcorp.ir.coach.TextViewPlus
             android:id="@+id/tvpGroupName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

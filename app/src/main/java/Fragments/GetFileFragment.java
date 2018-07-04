@@ -77,6 +77,7 @@ public class GetFileFragment extends Fragment {
 //                Toast.makeText(getActivity(), "sd", Toast.LENGTH_LONG).show();
                 try{
                     ChooserDialog show = new ChooserDialog().with(getActivity())
+                            .withFilter(false, false, "mnk")
                             .withStartFile(String.valueOf(Environment.getExternalStorageDirectory()))
                             .withChosenListener(new ChooserDialog.Result() {
                                 @Override

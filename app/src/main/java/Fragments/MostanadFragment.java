@@ -98,7 +98,7 @@ public class MostanadFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 GenerateCode generateCode = new GenerateCode();
-                tvCode.setText(generateCode.GenerateCode(18,dbHandler.GetGroupCode(spGroupMostanad.getSelectedItemPosition()+1,1),"10"));
+                tvCode.setText(generateCode.GenerateCode(18,dbHandler.GetGroupCode(spGroupMostanad.getSelectedItemPosition()+1,WeekID),"10"));
             }
         });
 

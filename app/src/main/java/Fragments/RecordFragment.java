@@ -160,7 +160,7 @@ public class RecordFragment extends Fragment {
         db = dbHandler.getReadableDatabase();
         final ArrayList<HashMap<String, String>> Items = new ArrayList<HashMap<String, String>>();
 
-        List<Record> recordList = dbHandler.getAllRecord(1);
+        List<Record> recordList = dbHandler.getAllRecord(WeekID);
         for(Record record : recordList){
             HashMap<String, String> map = new HashMap<String, String>();
             map.put("gname", record.getGroupName());
