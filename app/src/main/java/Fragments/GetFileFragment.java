@@ -16,6 +16,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -44,11 +47,14 @@ public class GetFileFragment extends Fragment {
     private int WeekID = 0;
 
     private OnFragmentInteractionListener mListener;
-    private Button btnGetFile;
+    private Button btnGetFile, btnSave;
     private TextViewPlus tvpFile;
+    EditText txtScore2;
     private DBHandler dbHandler;
     private Spinner spGroupFile;
     private Typeface tf;
+    RadioButton rdbFile, rdbDasti;
+    private RadioGroup rdGroup;
 
     public GetFileFragment() {
         // Required empty public constructor
@@ -85,16 +91,59 @@ public class GetFileFragment extends Fragment {
         btnGetFile = view.findViewById(R.id.btnGet);
         tvpFile = view.findViewById(R.id.tvpFile);
         spGroupFile = view.findViewById(R.id.spGroupFile);
+        btnSave = view.findViewById(R.id.btnSave);
+        txtScore2 = view.findViewById(R.id.txtScore2);
+        rdbFile = view.findViewById(R.id.rdbFile);
+        rdbDasti = view.findViewById(R.id.rdbDasti);
+        rdGroup = view.findViewById(R.id.rdGroup);
         dbHandler = new DBHandler(getActivity());
         btnGetFile.setTypeface(tf);
-
+        txtScore2.setTypeface(tf);
+        btnSave.setTypeface(tf);
+        rdbDasti.setTypeface(tf);
+        rdbFile.setTypeface(tf);
         LoadData();
+
         try{
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, dbHandler.GetGroupName(WeekID));
             spGroupFile.setAdapter(adapter);
         }catch (Exception ex){
             Toast.makeText(getActivity(), ex.getMessage(), Toast.LENGTH_LONG).show();
         }
+
+        rdGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup,int checkedId) {
+                switch(checkedId){
+                    case R.id.rdbDasti:
+                        btnSave.setVisibility(View.VISIBLE);
+                        txtScore2.setVisibility(View.VISIBLE);
+                        btnGetFile.setVisibility(View.GONE);
+                        break;
+                    case R.id.rdbFile:
+                        btnSave.setVisibility(View.GONE);
+                        txtScore2.setVisibility(View.GONE);
+                        btnGetFile.setVisibility(View.VISIBLE);
+                        break;
+                    default:
+                        break;
+            }
+            }});
+
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                dbHandler.UpdateScore(
+                        new Groups(
+                                spGroupFile.getSelectedItemPosition()+1,
+                                Integer.parseInt(txtScore2.getText().toString()),
+                                WeekID
+                        )
+                );
+                LoadData();
+            }
+        });
 
         btnGetFile.setOnClickListener(new View.OnClickListener() {
             @Override

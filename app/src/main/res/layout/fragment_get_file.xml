@@ -13,6 +13,30 @@
         android:orientation="vertical">
 
 
+        <RadioGroup
+            android:id="@+id/rdGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <RadioButton
+                android:id="@+id/rdbDasti"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="true"
+                android:text="ورود امتیاز به صورت دستی" />
+
+            <RadioButton
+                android:id="@+id/rdbFile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="با استفاده از فایل" />
+        </RadioGroup>
+
         <Spinner
             android:id="@+id/spGroupFile"
             android:layout_width="match_parent"
@@ -20,6 +44,19 @@
             android:layout_margin="10dp"
             android:background="@drawable/btnseletor" />
 
+
+        <EditText
+            android:id="@+id/txtScore2"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/edittextlayout"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="امتیاز"
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            android:textColor="@color/text" />
 
         <Button
             android:id="@+id/btnGet"
@@ -29,6 +66,16 @@
             android:background="@drawable/btnseletor"
             android:text="باز کردن فایل دریافتی"
             android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/btnseletor"
+            android:text="ذخیره"
+            android:textSize="16sp"
+            android:visibility="gone" />
 
         <ScrollView
             android:layout_width="match_parent"
