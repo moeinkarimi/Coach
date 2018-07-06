@@ -33,8 +33,13 @@ public class GenerateCode {
         return GroupCode + String.valueOf(GameId) + ConvertCodeToScore(Score) ;
     }
 
-    private String ConvertCodeToScore(String gameScore){
+    public String ConvertCodeToScore(String gameScore){
         return Integer.toString(Integer.parseInt(gameScore, 10), 6);
+    }
+
+    public String ConvertBinaryToDesimal(String gameScore){
+
+        return Integer.toString(Integer.parseInt(gameScore, 2), 10);
     }
 
     public String GenerateGameTime(int GameId,String GroupCode, String GameTime){

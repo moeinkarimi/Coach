@@ -1,14 +1,20 @@
 package Model;
 
 public class Groups {
-    int ID, GroupID, Scores, Week;
-    String Code, GroupName;
+    private int ID, GroupID, Scores, Week;
+    private String Code, GroupName;
 
     public Groups() {
     }
 
     public Groups(String groupName) {
         GroupName = groupName;
+    }
+
+    public Groups(int groupID,int scores,int week) {
+        GroupID = groupID;
+        Scores = scores;
+        Week = week;
     }
 
     public Groups(int groupID,int scores,int week,String code) {

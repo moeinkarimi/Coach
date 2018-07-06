@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        Moein {
+            keyAlias 'moein'
+            keyPassword '1m2o3e4i5n1376'
+            storeFile file('D:/Moein/moein/coach.jks')
+            storePassword '1m2o3e4i5n1376'
+        }
+    }
     compileSdkVersion 26
     defaultConfig {
         applicationId "mytechcorp.ir.coach"
@@ -9,6 +17,7 @@ android {
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
+        signingConfig signingConfigs.Moein
     }
     buildTypes {
         release {
@@ -16,10 +25,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    productFlavors {
+    }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     implementation 'com.android.support:support-v4:26.1.0'

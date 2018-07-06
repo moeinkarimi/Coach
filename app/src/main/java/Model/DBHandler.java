@@ -95,6 +95,15 @@ public class DBHandler extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void UpdateScore(Groups groups){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(Score, groups.getGroupsScores());
+
+        db.update(TABLE_Weeks,values,"Week =? AND GroupID =?",new String[] {String.valueOf(groups.getGroupsWeek()), String.valueOf(groups.getGroupID())});
+        db.close();
+    }
+
     public boolean GetGroupAddedState(int WeekId, int groupId){
         String query = "SELECT * FROM " + TABLE_Weeks + " WHERE Week = " + WeekId + " And GroupID = " + groupId;
         SQLiteDatabase db = this.getReadableDatabase();
@@ -135,6 +144,26 @@ public class DBHandler extends SQLiteOpenHelper {
         return result;
     }
 
+
+
+    public String[] GetGroupNameIfHasScore(int WeekId){
+        String query = "SELECT q.GroupName FROM " + TABLE_Groups +" q INNER JOIN " + TABLE_Weeks
+                + " a ON q.ID = a.GroupID Where a.Week = "+WeekId + " And a.Score <> 0 ";
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] result;
+        Cursor cursor = db.rawQuery(query,null);
+        result = new String[cursor.getCount()];
+        if (cursor.moveToFirst()) {
+            int i = 0;
+
+            do {
+                result[i] = cursor.getString(0);
+                i++;
+            }while (cursor.moveToNext());
+        }
+        return result;
+    }
+
     public String GetGroupCode(int id,int WeekId){
         String query = "SELECT Code FROM " + TABLE_Weeks + " Where GroupID = "+ id + " And Week = " + WeekId;
         SQLiteDatabase db = this.getReadableDatabase();
@@ -146,6 +175,18 @@ public class DBHandler extends SQLiteOpenHelper {
             }while (cursor.moveToNext());
         }
         return result;
+    }
+
+    public int GetSumOfScore(int groupID){
+        String query = "SELECT Sum(Score) FROM " + TABLE_Weeks + " Where GroupID = "+ groupID;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query,null);
+        if (cursor.moveToFirst()) {
+            do {
+                return Integer.parseInt(cursor.getString(0));
+            }while (cursor.moveToNext());
+        }
+        else return 0;
     }
 
     //Record

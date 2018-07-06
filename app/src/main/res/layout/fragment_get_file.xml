@@ -9,19 +9,43 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layoutDirection="rtl"
         android:orientation="vertical">
+
+
+        <Spinner
+            android:id="@+id/spGroupFile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/btnseletor" />
+
 
         <Button
             android:id="@+id/btnGet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:layout_margin="5dp"
+            android:background="@drawable/btnseletor"
+            android:text="باز کردن فایل دریافتی"
+            android:textSize="16sp" />
 
-        <mytechcorp.ir.coach.TextViewPlus
-            android:id="@+id/tvpFile"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:textSize="18sp" />
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <mytechcorp.ir.coach.TextViewPlus
+                    android:id="@+id/tvpFile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </ScrollView>
     </LinearLayout>
 </FrameLayout>

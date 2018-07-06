@@ -89,7 +89,7 @@ public class Maket extends Fragment {
         rdbGood.setTypeface(tf);
 
         try{
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, dbHandler.GetGroupName(1));
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, dbHandler.GetGroupName(WeekID));
             spGroupMaket.setAdapter(adapter);
         }catch (Exception ex){
             Toast.makeText(getActivity(), ex.getMessage(), Toast.LENGTH_LONG).show();

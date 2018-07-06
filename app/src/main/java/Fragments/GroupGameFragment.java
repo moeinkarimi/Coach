@@ -95,7 +95,7 @@ public class GroupGameFragment extends Fragment {
         btnRegroup.setTypeface(tf);
         setGameTime();
         try{
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, dbHandler.GetGroupName(1));
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, dbHandler.GetGroupName(WeekID));
             spGroupGame.setAdapter(adapter);
 
         }catch (Exception ex){
@@ -181,9 +181,7 @@ public class GroupGameFragment extends Fragment {
                         TextViewPlus tvpCode = view.findViewById(R.id.tvpCode);
                         TextViewPlus tvpCode2 = view.findViewById(R.id.tvpCode2);
                         TextViewPlus tvpCode3 = view.findViewById(R.id.tvpCode3);
-                        TextViewPlus tvpRec = view.findViewById(R.id.tvpRecord);
                         GenerateCode generateCode = new GenerateCode();
-                        Log.d("ss" , tvpCode3.getText().toString());
                         tvpCode.setText(generateCode.GenerateGameTime(57, tvpCode2.getText().toString(), tvpCode3.getText().toString()));
                     }
                 });
@@ -254,22 +252,23 @@ public class GroupGameFragment extends Fragment {
             }
         }
         else if (GroupCount % 3 == 1){
-            if (GroupCount < 4){
+            if (GroupCount <= 4){
                 for (int i=0;i<GroupCount;i++) {
                     if (i < 2) {
                         dbHandler.AddGameTime(new GameTime(WeekID,gAdded[i],"09"));
                     }
-                    else if (i >= 2 && i < 4) {
+                    else {
                         dbHandler.AddGameTime(new GameTime(WeekID,gAdded[i],"18"));
                     }
                 }
             }
-            else if (GroupCount < 7){
+            else if (GroupCount <= 7){
+                Log.d("s",String.valueOf(GroupCount));
                 for (int i=0;i<GroupCount;i++) {
                     if (i < 3) {
                         dbHandler.AddGameTime(new GameTime(WeekID,gAdded[i],"09"));
                     }
-                    else if (i >= 3 && i < 5) {
+                    else if (i >= 3 && i <5) {
                         dbHandler.AddGameTime(new GameTime(WeekID,gAdded[i],"18"));
                     }
                     else {
@@ -277,7 +276,7 @@ public class GroupGameFragment extends Fragment {
                     }
                 }
             }
-            else if (GroupCount < 10){
+            else if (GroupCount <= 10){
                 for (int i=0;i<GroupCount;i++) {
                     if (i < 3) {
                         dbHandler.AddGameTime(new GameTime(WeekID,gAdded[i],"09"));
@@ -293,7 +292,7 @@ public class GroupGameFragment extends Fragment {
                     }
                 }
             }
-            else if (GroupCount < 13){
+            else if (GroupCount <= 13){
                 for (int i=0;i<GroupCount;i++) {
                     if (i < 3) {
                         dbHandler.AddGameTime(new GameTime(WeekID,gAdded[i],"09"));
@@ -312,7 +311,7 @@ public class GroupGameFragment extends Fragment {
                     }
                 }
             }
-            else if (GroupCount < 16){
+            else if (GroupCount <= 16){
                 for (int i=0;i<GroupCount;i++) {
                     if (i < 3) {
                         dbHandler.AddGameTime(new GameTime(WeekID,gAdded[i],"09"));
@@ -334,7 +333,7 @@ public class GroupGameFragment extends Fragment {
                     }
                 }
             }
-            else if (GroupCount < 19){
+            else if (GroupCount <= 19){
                 for (int i=0;i<GroupCount;i++) {
                     if (i < 3) {
                         dbHandler.AddGameTime(new GameTime(WeekID,gAdded[i],"09"));
@@ -359,7 +358,7 @@ public class GroupGameFragment extends Fragment {
                     }
                 }
             }
-            else if (GroupCount < 22){
+            else if (GroupCount <= 22){
                 for (int i=0;i<GroupCount;i++) {
                     if (i < 3) {
                         dbHandler.AddGameTime(new GameTime(WeekID,gAdded[i] ,"09"));
@@ -387,7 +386,7 @@ public class GroupGameFragment extends Fragment {
                     }
                 }
             }
-            else if (GroupCount < 25){
+            else if (GroupCount <= 25){
                 for (int i=0;i<GroupCount;i++) {
                     if (i < 3) {
                         dbHandler.AddGameTime(new GameTime(WeekID,gAdded[i] ,"09"));
@@ -420,7 +419,7 @@ public class GroupGameFragment extends Fragment {
             }
         }
         else if (GroupCount % 3 == 2){
-            if (GroupCount < 5){
+            if (GroupCount <= 5){
                 for (int i=0;i<GroupCount;i++) {
                     if (i < 3) {
                         dbHandler.AddGameTime(new GameTime(WeekID,gAdded[i] ,"09"));
@@ -430,7 +429,7 @@ public class GroupGameFragment extends Fragment {
                     }
                 }
             }
-            else if (GroupCount < 8){
+            else if (GroupCount <= 8){
                 for (int i=0;i<GroupCount;i++) {
                     if (i < 3) {
                         dbHandler.AddGameTime(new GameTime(WeekID,gAdded[i] ,"09"));
@@ -443,7 +442,7 @@ public class GroupGameFragment extends Fragment {
                     }
                 }
             }
-            else if (GroupCount < 11){
+            else if (GroupCount <= 11){
                 for (int i=0;i<GroupCount;i++) {
                     if (i < 3) {
                         dbHandler.AddGameTime(new GameTime(WeekID,gAdded[i] ,"09"));
@@ -459,7 +458,7 @@ public class GroupGameFragment extends Fragment {
                     }
                 }
             }
-            else if (GroupCount < 14){
+            else if (GroupCount <= 14){
                 for (int i=0;i<GroupCount;i++) {
                     if (i < 3) {
                         dbHandler.AddGameTime(new GameTime(WeekID,gAdded[i] ,"09"));
@@ -478,7 +477,7 @@ public class GroupGameFragment extends Fragment {
                     }
                 }
             }
-            else if (GroupCount < 17){
+            else if (GroupCount <= 17){
                 for (int i=0;i<GroupCount;i++) {
                     if (i < 3) {
                         dbHandler.AddGameTime(new GameTime(WeekID,gAdded[i] ,"09"));
@@ -500,7 +499,7 @@ public class GroupGameFragment extends Fragment {
                     }
                 }
             }
-            else if (GroupCount < 20){
+            else if (GroupCount <= 20){
                 for (int i=0;i<GroupCount;i++) {
                     if (i < 3) {
                         dbHandler.AddGameTime(new GameTime(WeekID,gAdded[i] ,"09"));
@@ -525,7 +524,7 @@ public class GroupGameFragment extends Fragment {
                     }
                 }
             }
-            else if (GroupCount < 23){
+            else if (GroupCount <= 23){
                 for (int i=0;i<GroupCount;i++) {
                     if (i < 3) {
                         dbHandler.AddGameTime(new GameTime(WeekID,gAdded[i] ,"09"));

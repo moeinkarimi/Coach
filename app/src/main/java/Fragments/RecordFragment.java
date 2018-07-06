@@ -109,7 +109,7 @@ public class RecordFragment extends Fragment {
         txtRecord3.setTypeface(tf);
         loadData();
         try{
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, dbHandler.GetGroupName(1));
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, dbHandler.GetGroupName(WeekID));
             spGroupRecord.setAdapter(adapter);
             spGroupRecord.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override

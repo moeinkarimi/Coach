@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import Model.DBHandler;
 import Model.GenerateCode;
+import Model.Groups;
 import mytechcorp.ir.coach.R;
 import mytechcorp.ir.coach.TextViewPlus;
 
@@ -37,6 +38,7 @@ public class MostanadFragment extends Fragment {
     private Spinner spGroupMostanad;
     private DBHandler dbHandler;
     private int WeekID = 0;
+    private Spinner spGroupFile;
 
 
     public MostanadFragment() {
@@ -75,21 +77,23 @@ public class MostanadFragment extends Fragment {
 //        txtGroup = view.findViewById(R.id.txtGroup);
         btnGenerate = view.findViewById(R.id.btnGenerate);
         tvCode = view.findViewById(R.id.tvCode);
-        txtGroup2 = view.findViewById(R.id.txtGroup2);
+//        txtGroup2 = view.findViewById(R.id.txtGroup2);
         txtScore = view.findViewById(R.id.txtScore);
         btnGenerate2 = view.findViewById(R.id.btnGenerate2);
         spGroupMostanad = view.findViewById(R.id.spGroupMostanad);
+        spGroupFile = view.findViewById(R.id.spGroupFile);
         tvCode2 = view.findViewById(R.id.tvCode2);
 //        txtGroup.setTypeface(tf);
         btnGenerate.setTypeface(tf);
-        txtGroup2.setTypeface(tf);
+//        txtGroup2.setTypeface(tf);
         txtScore.setTypeface(tf);
         btnGenerate2.setTypeface(tf);
 
 
         try{
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, dbHandler.GetGroupName(1));
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, dbHandler.GetGroupName(WeekID));
             spGroupMostanad.setAdapter(adapter);
+            spGroupFile.setAdapter(adapter);
         }catch (Exception ex){
             Toast.makeText(getActivity(), ex.getMessage(), Toast.LENGTH_LONG).show();
         }
@@ -106,8 +110,14 @@ public class MostanadFragment extends Fragment {
 
             @Override
             public void onClick(View view) {
-                GenerateCode generateCode = new GenerateCode();
-                tvCode2.setText(generateCode.GenerateCode(18,txtGroup2.getText().toString(),txtScore.getText().toString()));
+                dbHandler.UpdateScore(
+                        new Groups(
+                                spGroupFile.getSelectedItemPosition()+1,
+                                Integer.parseInt(txtScore.getText().toString()) + dbHandler.GetSumOfScore(spGroupFile.getSelectedItemPosition()+1)
+                                ,WeekID
+                        )
+                );
+                tvCode2.setText("امتیاز با موفقیت اضافه شد.");
             }
         });
 

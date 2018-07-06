@@ -27,7 +27,8 @@
                 android:id="@+id/spGroupMostanad"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp" />
+                android:layout_margin="10dp"
+                android:background="@drawable/btnseletor" />
 
             <Button
                 android:id="@+id/btnGenerate"
@@ -58,18 +59,13 @@
                 android:text="بررسی و امتیاز دهی به مستندات"
                 android:textSize="18sp" />
 
-            <EditText
-                android:id="@+id/txtGroup2"
+            <Spinner
+                android:id="@+id/spGroupFile"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="@drawable/edittextlayout"
-                android:ems="10"
-                android:gravity="center"
-                android:hint="کد گروه"
-                android:inputType="textPersonName"
-                android:padding="10dp"
-                android:textColor="@color/text" />
+                android:background="@drawable/btnseletor" />
+
 
             <EditText
                 android:id="@+id/txtScore"
@@ -90,7 +86,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:background="@drawable/btnseletor"
-                android:text="دریافت کد"
+                android:text="ثبت امتیاز"
                 android:textSize="18sp" />
 
             <mytechcorp.ir.coach.TextViewPlus

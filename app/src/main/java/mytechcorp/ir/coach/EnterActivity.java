@@ -23,6 +23,7 @@ import java.util.Random;
 
 import Model.DBHandler;
 import Model.FirstRun;
+import Model.GenerateCode;
 import Model.Groups;
 import Model.Record;
 
@@ -160,15 +161,42 @@ public class EnterActivity extends AppCompatActivity {
         });
     }
 
-    public void cbxGPsEnables(){
+    public String GroupCode(int groupId){
+        GenerateCode code = new GenerateCode();
+        try{
+            if (spWeek.getSelectedItemPosition() != 0) {
+                //if (dbHandler.GetGroupNameIfHasScore(spWeek.getSelectedItemPosition() + 1).length < 1) {
+                String score = code.ConvertCodeToScore(String.valueOf(dbHandler.GetSumOfScore(groupId)));
+                if (score.length() == 1) {
+                    return "0000" + score;
+                }else if (score.length() == 2) {
+                    return "000" + score;
+                } else if (score.length() == 3) {
+                    return "00" + score;
+                } else if (score.length() == 4) {
+                    return "0" + score;
+                } else if (score.length() == 5) {
+                    return score;
+                }
+                //} else return "00000";
+            }
+        }
+        catch (Exception ex){
+            Toast.makeText(this, ex.getMessage() + "\n تا زمانی که هفته اول را وارد نکنید نمیتوانید از برنامه استفاده کنید", Toast.LENGTH_LONG
+            ).show();
+        }
 
+        return "";
+    }
+
+    public void cbxGPsEnables(){
         // 1
         cbxGp1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton,boolean b) {
                 if (cbxGp1.isChecked()){
                     cbxGp2.setEnabled(true);
-                    tvpGp1.setText("76");
+                    tvpGp1.setText("76" + GroupCode(1));
                 }
                 else {
                     cbxGp2.setEnabled(false);
@@ -182,7 +210,7 @@ public class EnterActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton,boolean b) {
                 if (cbxGp2.isChecked()) {
                     cbxGp3.setEnabled(true);
-                    tvpGp2.setText("11");
+                    tvpGp2.setText("11"+ GroupCode(2));
                 } else {
                     cbxGp3.setEnabled(false);
                     tvpGp2.setText("");
@@ -195,7 +223,7 @@ public class EnterActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton,boolean b) {
         if (cbxGp3.isChecked()){
             cbxGp4.setEnabled(true);
-            tvpGp3.setText("84");
+            tvpGp3.setText("84" + GroupCode(3));
         }
         else {
             cbxGp4.setEnabled(false);
@@ -209,7 +237,7 @@ public class EnterActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton,boolean b) {
                 if (cbxGp4.isChecked()){
                     cbxGp5.setEnabled(true);
-                    tvpGp4.setText("41");
+                    tvpGp4.setText("41" + GroupCode(4));
                 }
                 else {
                     cbxGp5.setEnabled(false);
@@ -223,7 +251,7 @@ public class EnterActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton,boolean b) {
                 if (cbxGp5.isChecked()){
                     cbxGp6.setEnabled(true);
-                    tvpGp5.setText("36");
+                    tvpGp5.setText("36" + GroupCode(5));
                 }
                 else {
                     cbxGp6.setEnabled(false);
@@ -237,7 +265,7 @@ public class EnterActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton,boolean b) {
                 if (cbxGp6.isChecked()){
                     cbxGp7.setEnabled(true);
-                    tvpGp6.setText("57");
+                    tvpGp6.setText("57" + GroupCode(6));
                 }
                 else {
                     cbxGp7.setEnabled(false);
@@ -251,7 +279,7 @@ public class EnterActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton,boolean b) {
                 if (cbxGp7.isChecked()){
                     cbxGp8.setEnabled(true);
-                    tvpGp7.setText("21");
+                    tvpGp7.setText("21" + GroupCode(7));
                 }
                 else {
                     cbxGp8.setEnabled(false);
@@ -265,7 +293,7 @@ public class EnterActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton,boolean b) {
                 if (cbxGp8.isChecked()){
                     cbxGp9.setEnabled(true);
-                    tvpGp8.setText("78");
+                    tvpGp8.setText("78" + GroupCode(8));
                 }
                 else {
                     cbxGp9.setEnabled(false);
@@ -281,7 +309,7 @@ public class EnterActivity extends AppCompatActivity {
 
                 if (cbxGp9.isChecked()){
                     cbxGp10.setEnabled(true);
-                    tvpGp9.setText("38");
+                    tvpGp9.setText("38" + GroupCode(9));
                 }
                 else {
                     cbxGp10.setEnabled(false);
@@ -296,7 +324,7 @@ public class EnterActivity extends AppCompatActivity {
 
                 if (cbxGp10.isChecked()){
                     cbxGp11.setEnabled(true);
-                    tvpGp10.setText("55");
+                    tvpGp10.setText("55" + GroupCode(10));
                 }
                 else {
                     cbxGp11.setEnabled(false);
@@ -311,7 +339,7 @@ public class EnterActivity extends AppCompatActivity {
 
                 if (cbxGp11.isChecked()){
                     cbxGp12.setEnabled(true);
-                    tvpGp11.setText("22");
+                    tvpGp11.setText("22" + GroupCode(11));
                 }
                 else {
                     cbxGp12.setEnabled(false);
@@ -326,7 +354,7 @@ public class EnterActivity extends AppCompatActivity {
 
                 if (cbxGp12.isChecked()){
                     cbxGp13.setEnabled(true);
-                    tvpGp12.setText("42");
+                    tvpGp12.setText("42" + GroupCode(12));
                 }
                 else {
                     cbxGp13.setEnabled(false);
@@ -341,7 +369,7 @@ public class EnterActivity extends AppCompatActivity {
 
                 if (cbxGp13.isChecked()){
                     cbxGp14.setEnabled(true);
-                    tvpGp13.setText("68");
+                    tvpGp13.setText("68" + GroupCode(13));
                 }
                 else {
                     cbxGp14.setEnabled(false);
@@ -356,7 +384,7 @@ public class EnterActivity extends AppCompatActivity {
 
                 if (cbxGp14.isChecked()){
                     cbxGp15.setEnabled(true);
-                    tvpGp14.setText("18");
+                    tvpGp14.setText("18"+ GroupCode(14));
                 }
                 else {
                     cbxGp15.setEnabled(false);
@@ -371,7 +399,7 @@ public class EnterActivity extends AppCompatActivity {
 
                 if (cbxGp15.isChecked()){
                     cbxGp16.setEnabled(true);
-                    tvpGp15.setText("67");
+                    tvpGp15.setText("67"+ GroupCode(15));
                 }
                 else {
                     cbxGp16.setEnabled(false);
@@ -386,7 +414,7 @@ public class EnterActivity extends AppCompatActivity {
 
                 if (cbxGp16.isChecked()){
                     cbxGp17.setEnabled(true);
-                    tvpGp16.setText("54");
+                    tvpGp16.setText("54"+ GroupCode(16));
                 }
                 else {
                     cbxGp17.setEnabled(false);
@@ -401,7 +429,7 @@ public class EnterActivity extends AppCompatActivity {
 
                 if (cbxGp17.isChecked()){
                     cbxGp18.setEnabled(true);
-                    tvpGp17.setText("97");
+                    tvpGp17.setText("97"+ GroupCode(17));
                 }
                 else {
                     cbxGp18.setEnabled(false);
@@ -416,7 +444,7 @@ public class EnterActivity extends AppCompatActivity {
 
                 if (cbxGp18.isChecked()){
                     cbxGp19.setEnabled(true);
-                    tvpGp18.setText("30");
+                    tvpGp18.setText("30"+ GroupCode(18));
                 }
                 else {
                     cbxGp19.setEnabled(false);
@@ -431,7 +459,7 @@ public class EnterActivity extends AppCompatActivity {
 
                 if (cbxGp19.isChecked()){
                     cbxGp20.setEnabled(true);
-                    tvpGp19.setText("28");
+                    tvpGp19.setText("28"+ GroupCode(19));
                 }
                 else {
                     cbxGp20.setEnabled(false);
@@ -446,7 +474,7 @@ public class EnterActivity extends AppCompatActivity {
 
                 if (cbxGp20.isChecked()){
                     cbxGp21.setEnabled(true);
-                    tvpGp20.setText("15");
+                    tvpGp20.setText("15"+ GroupCode(20));
                 }
                 else {
                     cbxGp21.setEnabled(false);
@@ -461,7 +489,7 @@ public class EnterActivity extends AppCompatActivity {
 
                 if (cbxGp21.isChecked()){
                     cbxGp22.setEnabled(true);
-                    tvpGp21.setText("52");
+                    tvpGp21.setText("52"+ GroupCode(21));
                 }
                 else {
                     cbxGp22.setEnabled(false);
@@ -476,7 +504,7 @@ public class EnterActivity extends AppCompatActivity {
 
                 if (cbxGp22.isChecked()){
                     cbxGp23.setEnabled(true);
-                    tvpGp22.setText("46");
+                    tvpGp22.setText("46"+ GroupCode(22));
                 }
                 else {
                     cbxGp23.setEnabled(false);
@@ -490,7 +518,7 @@ public class EnterActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton,boolean b) {
                 if (cbxGp23.isChecked()){
                     cbxGp24.setEnabled(true);
-                    tvpGp23.setText("25");
+                    tvpGp23.setText("25"+ GroupCode(23));
                 }
                 else {
                     cbxGp24.setEnabled(false);
@@ -504,7 +532,7 @@ public class EnterActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton,boolean b) {
                 if (cbxGp24.isChecked()){
                     cbxGp25.setEnabled(true);
-                    tvpGp24.setText("33");
+                    tvpGp24.setText("33"+ GroupCode(24));
                 }
                 else {
                     cbxGp25.setEnabled(false);
@@ -517,7 +545,7 @@ public class EnterActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton,boolean b) {
                 if (cbxGp25.isChecked()){
-                    tvpGp25.setText("14");
+                    tvpGp25.setText("14"+ GroupCode(25));
                 }
                 else {
                     tvpGp25.setText("");
@@ -536,7 +564,7 @@ public class EnterActivity extends AppCompatActivity {
                                 1,
                                 0,
                                 spWeek.getSelectedItemPosition() + 1,
-                                tvpGp1.getText().toString()
+                                tvpGp1.getText().toString().substring(0,2)
                         )
                 );
                 dbHandler.AddRecord(
@@ -561,7 +589,7 @@ public class EnterActivity extends AppCompatActivity {
                             2,
                             0,
                             spWeek.getSelectedItemPosition()+1,
-                            tvpGp2.getText().toString()
+                            tvpGp2.getText().toString().substring(0,2)
                     )
             );
                 dbHandler.AddRecord(
@@ -586,7 +614,7 @@ public class EnterActivity extends AppCompatActivity {
                             3,
                             0,
                             spWeek.getSelectedItemPosition()+1,
-                            tvpGp3.getText().toString()
+                            tvpGp3.getText().toString().substring(0,2)
                     )
             );
                 dbHandler.AddRecord(
@@ -611,7 +639,7 @@ public class EnterActivity extends AppCompatActivity {
                             4,
                             0,
                             spWeek.getSelectedItemPosition()+1,
-                            tvpGp4.getText().toString()
+                            tvpGp4.getText().toString().substring(0,2)
                     )
             );
                 dbHandler.AddRecord(
@@ -636,7 +664,7 @@ public class EnterActivity extends AppCompatActivity {
                             5,
                             0,
                             spWeek.getSelectedItemPosition()+1,
-                            tvpGp5.getText().toString()
+                            tvpGp5.getText().toString().substring(0,2)
                     )
             );
                 dbHandler.AddRecord(
@@ -661,7 +689,7 @@ public class EnterActivity extends AppCompatActivity {
                             6,
                             0,
                             spWeek.getSelectedItemPosition()+1,
-                            tvpGp6.getText().toString()
+                            tvpGp6.getText().toString().substring(0,2)
                     )
             );
                 dbHandler.AddRecord(
@@ -686,7 +714,7 @@ public class EnterActivity extends AppCompatActivity {
                             7,
                             0,
                             spWeek.getSelectedItemPosition()+1,
-                            tvpGp7.getText().toString()
+                            tvpGp7.getText().toString().substring(0,2)
                     )
             );
                 dbHandler.AddRecord(
@@ -711,7 +739,7 @@ public class EnterActivity extends AppCompatActivity {
                             8,
                             0,
                             spWeek.getSelectedItemPosition()+1,
-                            tvpGp8.getText().toString()
+                            tvpGp8.getText().toString().substring(0,2)
                     )
             );
                 dbHandler.AddRecord(
@@ -736,7 +764,7 @@ public class EnterActivity extends AppCompatActivity {
                             9,
                             0,
                             spWeek.getSelectedItemPosition()+1,
-                            tvpGp9.getText().toString()
+                            tvpGp9.getText().toString().substring(0,2)
                     )
             );
                 dbHandler.AddRecord(
@@ -761,7 +789,7 @@ public class EnterActivity extends AppCompatActivity {
                             10,
                             0,
                             spWeek.getSelectedItemPosition()+1,
-                            tvpGp10.getText().toString()
+                            tvpGp10.getText().toString().substring(0,2)
                     )
             );
                 dbHandler.AddRecord(
@@ -786,7 +814,7 @@ public class EnterActivity extends AppCompatActivity {
                             11,
                             0,
                             spWeek.getSelectedItemPosition()+1,
-                            tvpGp11.getText().toString()
+                            tvpGp11.getText().toString().substring(0,2)
                     )
             );
                 dbHandler.AddRecord(
@@ -811,7 +839,7 @@ public class EnterActivity extends AppCompatActivity {
                             12,
                             0,
                             spWeek.getSelectedItemPosition()+1,
-                            tvpGp12.getText().toString()
+                            tvpGp12.getText().toString().substring(0,2)
                     )
             );
                 dbHandler.AddRecord(
@@ -836,7 +864,7 @@ public class EnterActivity extends AppCompatActivity {
                             13,
                             0,
                             spWeek.getSelectedItemPosition()+1,
-                            tvpGp13.getText().toString()
+                            tvpGp13.getText().toString().substring(0,2)
                     )
             );
                 dbHandler.AddRecord(
@@ -861,7 +889,7 @@ public class EnterActivity extends AppCompatActivity {
                             14,
                             0,
                             spWeek.getSelectedItemPosition()+1,
-                            tvpGp14.getText().toString()
+                            tvpGp14.getText().toString().substring(0,2)
                     )
             );
                 dbHandler.AddRecord(
@@ -886,7 +914,7 @@ public class EnterActivity extends AppCompatActivity {
                             15,
                             0,
                             spWeek.getSelectedItemPosition()+1,
-                            tvpGp15.getText().toString()
+                            tvpGp15.getText().toString().substring(0,2)
                     )
             );
                 dbHandler.AddRecord(
@@ -911,7 +939,7 @@ public class EnterActivity extends AppCompatActivity {
                             16,
                             0,
                             spWeek.getSelectedItemPosition()+1,
-                            tvpGp16.getText().toString()
+                            tvpGp16.getText().toString().substring(0,2)
                     )
             );
                 dbHandler.AddRecord(
@@ -936,7 +964,7 @@ public class EnterActivity extends AppCompatActivity {
                             17,
                             0,
                             spWeek.getSelectedItemPosition()+1,
-                            tvpGp17.getText().toString()
+                            tvpGp17.getText().toString().substring(0,2)
                     )
             );
                 dbHandler.AddRecord(
@@ -961,7 +989,7 @@ public class EnterActivity extends AppCompatActivity {
                             18,
                             0,
                             spWeek.getSelectedItemPosition()+1,
-                            tvpGp18.getText().toString()
+                            tvpGp18.getText().toString().substring(0,2)
                     )
             );
                 dbHandler.AddRecord(
@@ -986,7 +1014,7 @@ public class EnterActivity extends AppCompatActivity {
                             19,
                             0,
                             spWeek.getSelectedItemPosition()+1,
-                            tvpGp19.getText().toString()
+                            tvpGp19.getText().toString().substring(0,2)
                     )
             );
                 dbHandler.AddRecord(
@@ -1011,7 +1039,7 @@ public class EnterActivity extends AppCompatActivity {
                             20,
                             0,
                             spWeek.getSelectedItemPosition()+1,
-                            tvpGp20.getText().toString()
+                            tvpGp20.getText().toString().substring(0,2)
                     )
             );
                 dbHandler.AddRecord(
@@ -1036,7 +1064,7 @@ public class EnterActivity extends AppCompatActivity {
                             21,
                             0,
                             spWeek.getSelectedItemPosition()+1,
-                            tvpGp21.getText().toString()
+                            tvpGp21.getText().toString().substring(0,2)
                     )
             );
                 dbHandler.AddRecord(
@@ -1061,7 +1089,7 @@ public class EnterActivity extends AppCompatActivity {
                             22,
                             0,
                             spWeek.getSelectedItemPosition()+1,
-                            tvpGp22.getText().toString()
+                            tvpGp22.getText().toString().substring(0,2)
                     )
             );
                 dbHandler.AddRecord(
@@ -1086,7 +1114,7 @@ public class EnterActivity extends AppCompatActivity {
                             23,
                             0,
                             spWeek.getSelectedItemPosition()+1,
-                            tvpGp23.getText().toString()
+                            tvpGp23.getText().toString().substring(0,2)
                     )
             );
                 dbHandler.AddRecord(
@@ -1111,7 +1139,7 @@ public class EnterActivity extends AppCompatActivity {
                             24,
                             0,
                             spWeek.getSelectedItemPosition()+1,
-                            tvpGp24.getText().toString()
+                            tvpGp24.getText().toString().substring(0,2)
                     )
             );
                 dbHandler.AddRecord(
@@ -1136,7 +1164,7 @@ public class EnterActivity extends AppCompatActivity {
                             25,
                             0,
                             spWeek.getSelectedItemPosition()+1,
-                            tvpGp25.getText().toString()
+                            tvpGp25.getText().toString().substring(0,2)
                     )
             );
                 dbHandler.AddRecord(
