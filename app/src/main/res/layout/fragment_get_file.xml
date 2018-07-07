@@ -65,7 +65,8 @@
             android:layout_margin="5dp"
             android:background="@drawable/btnseletor"
             android:text="باز کردن فایل دریافتی"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/btnSave"
@@ -74,8 +75,7 @@
             android:layout_margin="5dp"
             android:background="@drawable/btnseletor"
             android:text="ذخیره"
-            android:textSize="16sp"
-            android:visibility="gone" />
+            android:textSize="16sp" />
 
         <ScrollView
             android:layout_width="match_parent"
