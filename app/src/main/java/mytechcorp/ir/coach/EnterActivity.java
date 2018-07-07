@@ -10,6 +10,7 @@ import android.graphics.Typeface;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -133,10 +134,6 @@ public class EnterActivity extends AppCompatActivity {
         cbxGp25.setTypeface(tf);
         cbxGPsEnables();
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission_group.STORAGE) != PackageManager.PERMISSION_GRANTED)
-        {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission_group.STORAGE}, 1);
-        }
         firstRun();
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item,new String[]{"هفته اول" ,"هفته دوم","هفته سوم","هفته چهارم","هفته پنجم","هفته ششم"});
         spWeek.setAdapter(adapter);
@@ -147,6 +144,7 @@ public class EnterActivity extends AppCompatActivity {
                     cbxsGp();
                 Intent intent = new Intent(ta , MainActivity.class);
                 intent.putExtra("Week" , spWeek.getSelectedItemPosition()+1);
+                Log.d("Week" , String.valueOf(spWeek.getSelectedItemPosition()+1));
                 startActivity(intent);
             }
         });
@@ -156,6 +154,7 @@ public class EnterActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(ta , MainActivity.class);
                 intent.putExtra("Week" , spWeek.getSelectedItemPosition()+1);
+                Log.d("Week" , String.valueOf(spWeek.getSelectedItemPosition()+1));
                 startActivity(intent);
             }
         });
@@ -197,6 +196,7 @@ public class EnterActivity extends AppCompatActivity {
                 if (cbxGp1.isChecked()){
                     cbxGp2.setEnabled(true);
                     tvpGp1.setText("76" + GroupCode(1));
+                    Log.d("2" , tvpGp1.getText().toString().substring(0,2));
                 }
                 else {
                     cbxGp2.setEnabled(false);

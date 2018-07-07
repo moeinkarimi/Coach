@@ -114,9 +114,22 @@ public class RecordFragment extends Fragment {
             spGroupRecord.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                    txtRecord1.setText(dbHandler.GetSelectedRecord(1, spGroupRecord.getSelectedItemPosition()+1)[0]);
-                    txtRecord2.setText(dbHandler.GetSelectedRecord(1, spGroupRecord.getSelectedItemPosition()+1)[1]);
-                    txtRecord3.setText(dbHandler.GetSelectedRecord(1, spGroupRecord.getSelectedItemPosition()+1)[2]);
+                    int r1 = Integer.parseInt(dbHandler.GetSelectedRecord(WeekID, spGroupRecord.getSelectedItemPosition()+1)[0]),
+                        r2 = Integer.parseInt(dbHandler.GetSelectedRecord(WeekID, spGroupRecord.getSelectedItemPosition()+1)[1]),
+                        r3 = Integer.parseInt(dbHandler.GetSelectedRecord(WeekID, spGroupRecord.getSelectedItemPosition()+1)[2]);
+
+                    if (r1 == 0)
+                        txtRecord1.setText("");
+                    else txtRecord1.setText(String.valueOf(r1));
+
+                    if (r2 == 0)
+                        txtRecord2.setText("");
+                    else txtRecord2.setText(String.valueOf(r2));
+
+                    if (r3 == 0)
+                        txtRecord3.setText("");
+                    else txtRecord3.setText(String.valueOf(r3));
+
                 }
 
                 @Override
@@ -151,6 +164,8 @@ public class RecordFragment extends Fragment {
                                 r3
                         )
                 );
+
+                loadData();
             }
         });
         return view;
@@ -167,6 +182,7 @@ public class RecordFragment extends Fragment {
             map.put("bestscore", String.valueOf(record.getBestRecord()));
             map.put("Code", record.getCode());
             Items.add(map);
+            Log.d("Item", Items.toString());
         }
 
         if (Items.isEmpty()){

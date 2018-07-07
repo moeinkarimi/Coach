@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView navigation;
     Typeface tf;
-    private int WeekID = 1;
+    private int WeekID;
     private ActionBar actionBar;
 
     @Override

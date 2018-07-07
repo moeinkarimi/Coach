@@ -3,9 +3,9 @@ apply plugin: 'com.android.application'
 android {
     signingConfigs {
         Moein {
-            keyAlias 'moein'
+            keyAlias 'Moein'
             keyPassword '1m2o3e4i5n1376'
-            storeFile file('D:/Moein/moein/coach.jks')
+            storeFile file('C:/Users/m.karami/Documents/coach.jks')
             storePassword '1m2o3e4i5n1376'
         }
     }

@@ -1,7 +1,7 @@
 package Model;
 
 public class GameTime {
-    int ID, Week, GroupID;
+    private int ID, Week, GroupID;
     String GameTime, GroupName, Code;
 
     public GameTime() {
@@ -73,4 +73,6 @@ public class GameTime {
     public void setCode(String code) {
         Code = code;
     }
+
+
 }

@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -211,8 +212,8 @@ public class DBHandler extends SQLiteOpenHelper {
                 + "WHEN Record2>= Record3 AND Record2>=Record1 THEN Record2 "
                 + "ELSE Record3 END, W.Code FROM "
                 + TABLE_Record + " S Inner Join " + TABLE_Groups
-                + " G on S.ID = G.ID Inner Join " + TABLE_Weeks
-                + " W on S.ID = W.GroupID Where S.Week = " + weekId
+                + " G on S.GroupID = G.ID Inner Join " + TABLE_Weeks
+                + " W on S.GroupID = W.ID Where S.Week = " + weekId
                 + " Order By (Case WHEN Record1>= Record2 AND Record1>=Record3 THEN Record1 "
                 + "WHEN Record2>= Record1 AND Record2>=Record3 THEN Record2 "
                 + "WHEN Record3>= Record1 AND Record3>=Record2 THEN Record3 "
@@ -239,6 +240,7 @@ public class DBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         String[] result;
         Cursor cursor = db.rawQuery(query,null);
+        Log.d("table", cursor.toString());
         result = new String[3];
         if (cursor.moveToFirst()) {
             result[0] = cursor.getString(0);
@@ -263,8 +265,9 @@ public class DBHandler extends SQLiteOpenHelper {
     public void AddGameTime(GameTime gameTime){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(GroupID, gameTime.getGroupID());
+        Log.d("w", String.valueOf(gameTime.getWeek()));
         values.put(Week, gameTime.getWeek());
+        values.put(GroupID, gameTime.getGroupID());
         values.put(GameTime, gameTime.GameTime);
         db.insert(TABLE_GameTime, null, values);
         db.close();
@@ -291,7 +294,7 @@ public class DBHandler extends SQLiteOpenHelper {
         List<GameTime> gameTimesList = new ArrayList<GameTime>();
         String query = "SELECT G.GroupName , GT.GameTime , W.Code FROM Groups"
                 + " G Inner Join GameTime GT on G.ID = GT.GroupID Inner Join Weeks "
-                + "W on GT.ID = W.GroupID Where GT.Week = " + WeekId +" Order by GameTime";
+                + "W on GT.GroupID = W.ID Where GT.Week = " + WeekId +" Order by GameTime";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(query, null);
         if (cursor.moveToFirst()) {

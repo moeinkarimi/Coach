@@ -121,6 +121,7 @@ public class GroupGameFragment extends Fragment {
     }
 
     private void setGameTime(){
+        Log.d("bool", String.valueOf(WeekID));
         if (dbHandler.CheckGameTime(WeekID)){
             db = dbHandler.getReadableDatabase();
             final ArrayList<HashMap<String, String>> Items = new ArrayList<HashMap<String, String>>();
@@ -164,7 +165,6 @@ public class GroupGameFragment extends Fragment {
 
             }
             else {
-                Log.d("S ", String.valueOf(Items.get(1)));
                 ListAdapter adapter = new SimpleAdapter(getActivity(), Items,
                         R.layout.record_sort,
                         new String[]{
@@ -211,6 +211,7 @@ public class GroupGameFragment extends Fragment {
     }
 
     private void Grouping(){
+
         int GroupCount = dbHandler.GetGroupCount(WeekID);
         String[] groupName = dbHandler.GetGroupName(WeekID);
         ArrayList<Integer> list = new ArrayList<Integer>();
@@ -218,7 +219,7 @@ public class GroupGameFragment extends Fragment {
             list.add(new Integer(i));
         }
         Collections.shuffle(list);
-        Log.d("s", String.valueOf(list));
+        Log.d("WeekID ", String.valueOf(WeekID));
         int[] gAdded = new int[GroupCount];
         for (int i = 0 ; i<GroupCount; i++){
             gAdded[i] = list.get(i);
