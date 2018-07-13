@@ -111,6 +111,19 @@ public class GetFileFragment extends Fragment {
             Toast.makeText(getActivity(), ex.getMessage(), Toast.LENGTH_LONG).show();
         }
 
+        if(WeekID==1 || WeekID==2){
+
+            rdGroup.setVisibility(View.VISIBLE);
+            btnSave.setVisibility(View.VISIBLE);
+            txtScore2.setVisibility(View.VISIBLE);
+            btnGetFile.setVisibility(View.GONE);
+        }
+        else {
+            rdGroup.setVisibility(View.GONE);
+            btnSave.setVisibility(View.GONE);
+            txtScore2.setVisibility(View.GONE);
+            btnGetFile.setVisibility(View.VISIBLE);
+        }
         rdGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup,int checkedId) {

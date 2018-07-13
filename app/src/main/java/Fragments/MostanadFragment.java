@@ -18,6 +18,7 @@ import android.widget.Toast;
 import Model.DBHandler;
 import Model.GenerateCode;
 import Model.Groups;
+import Model.State;
 import mytechcorp.ir.coach.R;
 import mytechcorp.ir.coach.TextViewPlus;
 
@@ -110,14 +111,23 @@ public class MostanadFragment extends Fragment {
 
             @Override
             public void onClick(View view) {
-                dbHandler.UpdateScore(
-                        new Groups(
-                                spGroupFile.getSelectedItemPosition()+1,
-                                Integer.parseInt(txtScore.getText().toString()) + dbHandler.GetSumOfScore(spGroupFile.getSelectedItemPosition()+1)
-                                ,WeekID
-                        )
-                );
-                tvCode2.setText("امتیاز با موفقیت اضافه شد.");
+                if(!dbHandler.GetMostanadState(WeekID,spGroupMostanad.getSelectedItemPosition()+1)){
+
+                    dbHandler.UpdateScore(
+                            new Groups(
+                                    spGroupFile.getSelectedItemPosition()+1,
+                                    Integer.parseInt(txtScore.getText().toString()) + dbHandler.GetSumOfScore(spGroupFile.getSelectedItemPosition()+1)
+                                    ,WeekID
+                            )
+                    );
+                    dbHandler.AddMosState(new State(1,spGroupFile.getSelectedItemPosition()+1,WeekID));
+                    tvCode2.setText("امتیاز با موفقیت اضافه شد.");
+                    btnGenerate2.setEnabled(false);
+                }
+                else {
+                    tvCode2.setText("امتیاز قبلا اضافه شده است.");
+                    btnGenerate2.setEnabled(false);
+                }
             }
         });
 

@@ -21,6 +21,7 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String TABLE_Weeks = "Weeks";
     private static final String TABLE_Record = "Record";
     private static final String TABLE_GameTime = "GameTime";
+    private static final String TABLE_State = "State";
 
     private static final String ID = "ID";
     private static final String GroupName = "GroupName";
@@ -32,6 +33,7 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String Record2 = "Record2";
     private static final String Record3 = "Record3";
     private static final String GameTime = "GameTime";
+    private static final String State = "State";
 
     public DBHandler(Context context) {
         super(context,DATABASE_NAME,null,DATABASE_VERSION);
@@ -69,6 +71,12 @@ public class DBHandler extends SQLiteOpenHelper {
                 + GameTime + " Text);";//5
         db.execSQL(dbexec3);
 
+        String dbexec4 = "CREATE TABLE IF NOT EXISTS "+ TABLE_State +"("
+                + ID + " Integer Primary Key Autoincrement," //0
+                + GroupID + " Integer," //1
+                + Week + " Integer,"
+                + State + " Integer);";
+        db.execSQL(dbexec4);
     }
 
     @Override
@@ -114,7 +122,7 @@ public class DBHandler extends SQLiteOpenHelper {
                 if (cursor.getString(1).equals(groupId) && cursor.getString(2).equals(WeekId)) {
                     return true;
                 } else
-                    return true;
+                    return false;
             }
         }
         return false;
@@ -307,5 +315,30 @@ public class DBHandler extends SQLiteOpenHelper {
             }while (cursor.moveToNext());
         }
         return gameTimesList;
+    }
+
+    // State
+    public void AddMosState(State state){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(GroupID, state.getGroupID());
+        values.put(Week, state.getWeekID());
+        values.put(State, state.getState());
+        db.insert(TABLE_State, null, values);
+        db.close();
+    }
+    public boolean GetMostanadState(int WeekId, int groupId){
+        String query = "SELECT * FROM " + TABLE_State + " WHERE Week = " + WeekId + " And GroupID = " + groupId;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor != null){
+            while (cursor.moveToFirst()) {
+                if (cursor.getString(3).equals("1")) {
+                    return true;
+                } else
+                    return false;
+            }
+        }
+        return false;
     }
 }
