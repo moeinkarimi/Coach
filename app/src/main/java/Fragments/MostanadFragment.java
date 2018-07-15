@@ -90,6 +90,12 @@ public class MostanadFragment extends Fragment {
         txtScore.setTypeface(tf);
         btnGenerate2.setTypeface(tf);
 
+        if (!dbHandler.GetMostanadState(WeekID,spGroupMostanad.getSelectedItemPosition()+1)){
+            for (int i=0; i<dbHandler.GetGroupName(WeekID).length; i++){
+
+                dbHandler.AddMosState(new State(0,i+1,WeekID));
+            }
+        }
 
         try{
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, dbHandler.GetGroupName(WeekID));
@@ -116,17 +122,15 @@ public class MostanadFragment extends Fragment {
                     dbHandler.UpdateScore(
                             new Groups(
                                     spGroupFile.getSelectedItemPosition()+1,
-                                    Integer.parseInt(txtScore.getText().toString())
-                                    ,WeekID
+                                    dbHandler.GetSumOfScore(spGroupMostanad.getSelectedItemPosition()+1,WeekID)+ Integer.parseInt(txtScore.getText().toString()),
+                                    WeekID
                             )
                     );
-                    dbHandler.AddMosState(new State(1,spGroupFile.getSelectedItemPosition()+1,WeekID));
+                    dbHandler.UpdateState(new State(1,spGroupFile.getSelectedItemPosition()+1,WeekID));
                     tvCode2.setText("امتیاز با موفقیت اضافه شد.");
-                    btnGenerate2.setEnabled(false);
                 }
                 else {
                     tvCode2.setText("امتیاز قبلا اضافه شده است.");
-                    btnGenerate2.setEnabled(false);
                 }
             }
         });

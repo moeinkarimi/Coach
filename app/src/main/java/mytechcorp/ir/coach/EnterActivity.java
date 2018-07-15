@@ -27,6 +27,7 @@ import Model.FirstRun;
 import Model.GenerateCode;
 import Model.Groups;
 import Model.Record;
+import Model.State;
 
 public class EnterActivity extends AppCompatActivity {
 
@@ -146,6 +147,10 @@ public class EnterActivity extends AppCompatActivity {
                 intent.putExtra("Week" , spWeek.getSelectedItemPosition()+1);
                 Log.d("Week" , String.valueOf(spWeek.getSelectedItemPosition()+1));
                 startActivity(intent);
+               /* for (int i=0; i<dbHandler.GetGroupName(spWeek.getSelectedItemPosition()+1).length; i++){
+
+                    dbHandler.AddMosState(new State(0,i+1,spWeek.getSelectedItemPosition()+1));
+                }*/
             }
         });
         btnEnter.setOnClickListener(new View.OnClickListener() {
@@ -165,7 +170,7 @@ public class EnterActivity extends AppCompatActivity {
         try{
             if (spWeek.getSelectedItemPosition() != 0) {
                 //if (dbHandler.GetGroupNameIfHasScore(spWeek.getSelectedItemPosition() + 1).length < 1) {
-                String score = code.ConvertCodeToScore(String.valueOf(dbHandler.GetSumOfScore(groupId, spWeek.getSelectedItemPosition()+1)));
+                String score = code.ConvertCodeToScore(String.valueOf(dbHandler.GetSumOfScore1(groupId)));
                 if (score.length() == 1) {
                     return "0000" + score;
                 }else if (score.length() == 2) {

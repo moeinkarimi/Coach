@@ -150,7 +150,7 @@ public class GetFileFragment extends Fragment {
                 dbHandler.UpdateScore(
                         new Groups(
                                 spGroupFile.getSelectedItemPosition()+1,
-                                Integer.parseInt(txtScore2.getText().toString()),
+                                dbHandler.GetSumOfScore(spGroupFile.getSelectedItemPosition()+1,WeekID)+ Integer.parseInt(txtScore2.getText().toString()),
                                 WeekID
                         )
                 );

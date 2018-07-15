@@ -72,6 +72,10 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, AnswerActivity.class);
                 startActivity(intent);
                 return true;
+            case R.id.score:
+                Intent intent1 = new Intent(this, ScoreActivity.class);
+                startActivity(intent1);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

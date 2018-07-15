@@ -198,6 +198,18 @@ public class DBHandler extends SQLiteOpenHelper {
         else return 0;
     }
 
+    public int GetSumOfScore1(int groupID){
+        String query = "SELECT Max(Score) FROM " + TABLE_Weeks + " Where GroupID = "+ groupID;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query,null);
+        if (cursor.moveToFirst()) {
+            do {
+                return Integer.parseInt(cursor.getString(0));
+            }while (cursor.moveToNext());
+        }
+        else return 0;
+    }
+
     //Record
     public void AddRecord(Record record){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -328,17 +340,27 @@ public class DBHandler extends SQLiteOpenHelper {
         db.close();
     }
     public boolean GetMostanadState(int WeekId, int groupId){
-        String query = "SELECT * FROM " + TABLE_State + " WHERE Week = " + WeekId + " And GroupID = " + groupId;
+        String query = "SELECT * FROM " + TABLE_State;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(query, null);
         if (cursor != null){
             while (cursor.moveToFirst()) {
-                if (cursor.getString(3).equals("1")) {
+                if (cursor.getString(1).equals(String.valueOf(WeekId))&&cursor.getString(2).equals(String.valueOf(groupId))&&cursor.getString(3).equals("1")) {
                     return true;
                 } else
                     return false;
             }
         }
         return false;
+    }
+
+
+    public void UpdateState(State state){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(State, state.getState());
+
+        db.update(TABLE_State,values,"Week =? AND GroupID =?",new String[] {String.valueOf(state.getWeekID()), String.valueOf(state.getGroupID())});
+        db.close();
     }
 }
