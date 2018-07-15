@@ -199,7 +199,7 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 
     public int GetSumOfScore1(int groupID){
-        String query = "SELECT Max(Score) FROM " + TABLE_Weeks + " Where GroupID = "+ groupID;
+        String query = "SELECT Sum(Score) FROM " + TABLE_Weeks + " Where GroupID = "+ groupID;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(query,null);
         if (cursor.moveToFirst()) {
