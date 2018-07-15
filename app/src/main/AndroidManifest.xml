@@ -21,8 +21,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".EnterActivity">
+        <activity android:name=".MainActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity android:name=".EnterActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -55,7 +61,11 @@
         <meta-data android:name="co.ronash.pushe.token" android:value="PUSHE_342637947967"/>
         <meta-data android:name="co.ronash.pushe.cr" android:value="Tm9uZQ=="/>
 
-        <activity android:name=".AnswerActivity"></activity>
+        <activity android:name=".AnswerActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+
+        </activity>
     </application>
 
 </manifest>

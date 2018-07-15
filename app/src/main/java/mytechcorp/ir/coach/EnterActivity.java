@@ -165,7 +165,7 @@ public class EnterActivity extends AppCompatActivity {
         try{
             if (spWeek.getSelectedItemPosition() != 0) {
                 //if (dbHandler.GetGroupNameIfHasScore(spWeek.getSelectedItemPosition() + 1).length < 1) {
-                String score = code.ConvertCodeToScore(String.valueOf(dbHandler.GetSumOfScore(groupId)));
+                String score = code.ConvertCodeToScore(String.valueOf(dbHandler.GetSumOfScore(groupId, spWeek.getSelectedItemPosition()+1)));
                 if (score.length() == 1) {
                     return "0000" + score;
                 }else if (score.length() == 2) {

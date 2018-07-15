@@ -116,7 +116,7 @@ public class MostanadFragment extends Fragment {
                     dbHandler.UpdateScore(
                             new Groups(
                                     spGroupFile.getSelectedItemPosition()+1,
-                                    Integer.parseInt(txtScore.getText().toString()) + dbHandler.GetSumOfScore(spGroupFile.getSelectedItemPosition()+1)
+                                    Integer.parseInt(txtScore.getText().toString())
                                     ,WeekID
                             )
                     );

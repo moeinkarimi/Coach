@@ -186,8 +186,8 @@ public class DBHandler extends SQLiteOpenHelper {
         return result;
     }
 
-    public int GetSumOfScore(int groupID){
-        String query = "SELECT Sum(Score) FROM " + TABLE_Weeks + " Where GroupID = "+ groupID;
+    public int GetSumOfScore(int groupID, int week){
+        String query = "SELECT Sum(Score) FROM " + TABLE_Weeks + " Where GroupID = "+ groupID + " And Week = " + week;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(query,null);
         if (cursor.moveToFirst()) {
