@@ -146,14 +146,18 @@ public class GetFileFragment extends Fragment {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                dbHandler.UpdateScore(
-                        new Groups(
-                                spGroupFile.getSelectedItemPosition()+1,
-                                dbHandler.GetSumOfScore(spGroupFile.getSelectedItemPosition()+1,WeekID)+ Integer.parseInt(txtScore2.getText().toString()),
-                                WeekID
-                        )
-                );
+                if (dbHandler.GetGroupScoreState(WeekID, spGroupFile.getSelectedItemPosition() + 1)) {
+                    dbHandler.UpdateScore(
+                            new Groups(
+                                    spGroupFile.getSelectedItemPosition() + 1,
+                                    dbHandler.GetSumOfScore(spGroupFile.getSelectedItemPosition() + 1, WeekID) + Integer.parseInt(txtScore2.getText().toString()),
+                                    WeekID
+                            )
+                    );
+                }
+                else {
+                    Toast.makeText(getActivity(), "امتیاز قبلا وارد شده است", Toast.LENGTH_LONG).show();
+                }
                 LoadData();
             }
         });

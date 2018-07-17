@@ -135,6 +135,21 @@ public class DBHandler extends SQLiteOpenHelper {
         return cursor.getCount();
     }
 
+    public boolean GetGroupScoreState(int WeekId, int groupId){
+        String query = "SELECT * FROM " + TABLE_Weeks + " WHERE Week = " + WeekId + " And GroupID = " + groupId;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor != null){
+            while (cursor.moveToFirst()) {
+                if (cursor.getString(4).equals("0")) {
+                    return true;
+                } else
+                    return false;
+            }
+        }
+        return false;
+    }
+
     public String[] GetGroupName(int WeekId){
         String query = "SELECT q.GroupName FROM " + TABLE_Groups +" q INNER JOIN " + TABLE_Weeks
                 + " a ON q.ID = a.GroupID Where a.Week = "+WeekId;
