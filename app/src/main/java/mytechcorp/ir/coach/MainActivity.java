@@ -72,10 +72,10 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, AnswerActivity.class);
                 startActivity(intent);
                 return true;
-            case R.id.score:
+          /*  case R.id.score:
                 Intent intent1 = new Intent(this, ScoreActivity.class);
                 startActivity(intent1);
-                return true;
+                return true;*/
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -101,9 +101,9 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.mostanad:
                     transaction.replace(R.id.content, new MostanadFragment(WeekID)).commit();
                     return true;
-                case R.id.getfile:
+                /*case R.id.getfile:
                     transaction.replace(R.id.content, new GetFileFragment(WeekID)).commit();
-                    return true;
+                    return true;*/
             }
             return false;
         }

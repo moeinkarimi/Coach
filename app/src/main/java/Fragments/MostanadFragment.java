@@ -117,7 +117,7 @@ public class MostanadFragment extends Fragment {
 
             @Override
             public void onClick(View view) {
-                if(!dbHandler.GetMostanadState(WeekID,spGroupMostanad.getSelectedItemPosition()+1)){
+                /*if(!dbHandler.GetMostanadState(WeekID,spGroupMostanad.getSelectedItemPosition()+1)){
 
                     dbHandler.UpdateScore(
                             new Groups(
@@ -131,7 +131,10 @@ public class MostanadFragment extends Fragment {
                 }
                 else {
                     tvCode2.setText("امتیاز قبلا اضافه شده است.");
-                }
+                }*/
+                GenerateCode generateCode = new GenerateCode();
+                tvCode2.setText(generateCode.GenerateCode(18,dbHandler.GetGroupCode(spGroupMostanad.getSelectedItemPosition()+1,WeekID),txtScore.getText().toString()));
+
             }
         });
 

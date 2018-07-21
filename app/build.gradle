@@ -11,12 +11,12 @@ android {
     }
     compileSdkVersion 26
     defaultConfig {
-        applicationId "mytechcorp.ir.coach"
+        applicationId "mytechcorp.ir.coach2"
         minSdkVersion 19
         //noinspection OldTargetApi
         targetSdkVersion 26
         versionCode 1
-        versionName "1.5.4"
+        versionName "1.6"
         signingConfig signingConfigs.Moein
     }
     buildTypes {

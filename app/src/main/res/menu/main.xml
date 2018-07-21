@@ -6,9 +6,9 @@
         android:icon="@drawable/ic_question_answer"
         android:title="text"
         app:showAsAction="always" />
-    <item
+    <!--<item
         android:id="@+id/score"
         android:icon="@drawable/ic_action_achievement"
         android:title="text"
-        app:showAsAction="always" />
+        app:showAsAction="always" />-->
 </menu>

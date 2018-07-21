@@ -22,9 +22,9 @@
         android:icon="@drawable/ic_movie"
         android:title="مستند سازی" />
 
-    <item
+    <!--<item
         android:id="@+id/getfile"
         android:icon="@drawable/ic_attach_file"
-        android:title="فایل"/>
+        android:title="فایل"/>-->
 
 </menu>
